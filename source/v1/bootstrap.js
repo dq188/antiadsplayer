@@ -80,7 +80,7 @@ aRule.prototype = {
         },
 		'17173_live': {
             'object': 'chrome://antiadsplayer/content/Player_stream.swf',
-            'target': /http:\/\/f\.v\.17173cdn\.com\/\d+\/flash\/Player_stream(_firstpage)?\.swf/i
+            'target': /http:\/\/f\.v\.17173cdn\.com\/\d+\/flash\/Player_stream.*\.swf/i
         },
 /**  -------------------------------------------------------------------------------------------------------  */
         'ku6_common': {
