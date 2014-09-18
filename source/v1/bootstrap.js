@@ -34,51 +34,51 @@ aRule.prototype = {
             'target': /https?:\/\/www\.iqiyi\.com\/(common\/flash)?player\/\d+\/(Main|Share)?Player.*\.swf/i
         },
 /**  -------------------------------------------------------------------------------------------------------  */
-		'pps': {
+        'pps': {
             'object': 'chrome://antiadsplayer/content/pps.swf',
             'target': /http:\/\/www\.iqiyi\.com\/player\/cupid\/common\/pps_flvplay_s\.swf/i
         },
 /**  -------------------------------------------------------------------------------------------------------  */
-		'letv': {
+        'letv': {
             'object': 'chrome://antiadsplayer/content/letv.swf',
             'target': /http:\/\/.*\.letv(cdn)?\.com\/.*(new)?player\/((C?SDK)?Letv|swf)Player\.swf/i
         },
-		'letv_skin': {
+        'letv_skin': {
             'object': 'http://player.letvcdn.com/p/201407/24/15/newplayer/1/SSLetvPlayer.swf',
             'target': /http:\/\/player\.letvcdn\.com\/p\/((?!15)\d+\/){3}newplayer\/1\/S?SLetvPlayer\.swf/i
         },
 /**  -------------------------------------------------------------------------------------------------------  */
-		'pptv': {
+        'pptv': {
             'object': 'chrome://antiadsplayer/content/pplive.swf',
             'target': /http:\/\/player.pplive.cn\/ikan\/.*\/player4player2\.swf/i
         },
-		'pplive': {
+        'pplive': {
             'object': 'chrome://antiadsplayer/content/pplive_live.swf',
             'target': /http:\/\/player.pplive.cn\/live\/.*\/player4live2\.swf/i
         },
 /**  -------------------------------------------------------------------------------------------------------  */
-		'sohu': {
+        'sohu': {
             'object': 'chrome://antiadsplayer/content/sohu.swf',
-            'target': /http:\/\/tv\.sohu\.com\/upload\/swf\/(?!live|sv).*\/(Main|PlayerShell)\.swf/i
+            'target': /http:\/\/(tv\.sohu\.com\/upload\/swf\/(?!live|sv)|[\d+\.]+\/).*\/(Main|PlayerShell)\.swf/i
         },
-		'sohu2': {
+        'sohu2': {
             'object': 'chrome://antiadsplayer/content/sohu2.swf',
             'target': /http:\/\/tv\.sohu\.com\/upload\/swf\/sv\d+\/Main\.swf/i
         },
-		'sohu_live': {
+        'sohu_live': {
             'object': 'chrome://antiadsplayer/content/sohu_live.swf',
-            'target': /http:\/\/(tv\.sohu\.com\/upload\/swf\/live\/\d+|[\d+\.]+\/test\/player)\/Main\.swf/i
+            'target': /http:\/\/(tv\.sohu\.com\/upload\/swf\/live\/\d+|[\d+\.]+:\d+\/test\/player)\/Main\.swf/i
         },
 /**  -------------------------------------------------------------------------------------------------------  */
-		'17173': {
+        '17173': {
             'object': 'chrome://antiadsplayer/content/Player_file.swf',
             'target': /http:\/\/f\.v\.17173cdn\.com\/\d+\/flash\/Player_file\.swf/i
         },
-		'17173_out': {
+        '17173_out': {
             'object': 'chrome://antiadsplayer/content/Player_file_out.swf',
             'target': /http:\/\/f\.v\.17173cdn\.com\/(\d+\/)?flash\/Player_file_out\.swf/i
         },
-		'17173_live': {
+        '17173_live': {
             'object': 'chrome://antiadsplayer/content/Player_stream.swf',
             'target': /http:\/\/f\.v\.17173cdn\.com\/\d+\/flash\/Player_stream.*\.swf/i
         },
