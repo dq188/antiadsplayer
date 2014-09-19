@@ -4,7 +4,7 @@
     <Description about="urn:mozilla:install-manifest">
         <em:id>antiadsplayer@mozest.com</em:id>
         <em:updateURL>https://raw.githubusercontent.com/jc3213/antiadsplayer/master/update.rdf</em:updateURL>
-		<em:bootstrap>true</em:bootstrap>
+        <em:bootstrap>true</em:bootstrap>
         <em:version>1.18.5</em:version>
         <em:name>Anti-ads Player</em:name>
         <em:creator>jc3213</em:creator>
@@ -12,10 +12,10 @@
         <em:contributor>Harv.c</em:contributor>
         <em:contributor>catcat520</em:contributor>
         <em:contributor>ywzhaiqi</em:contributor>
-		<em:homepageURL>http://jc3213.cwsurf.de/index.html</em:homepageURL>
+        <em:homepageURL>http://jc3213.cwsurf.de/index.html</em:homepageURL>
         <em:description>Get rid of the Ads and Blackscreen for Youku/Tudou/Letv/iQiyi/PPS/PPTV/17173/Sohu/Ku6</em:description>
         <em:localized>
-			<Description>
+        <Description>
                 <em:locale>zh-cn</em:locale>
                 <em:name>绿・播放器</em:name>
                 <em:creator>jc3213</em:creator>
@@ -25,10 +25,10 @@
                 <em:contributor>ywzhaiqi</em:contributor>
                 <em:homepageURL>http://jc3213.cwsurf.de/index.html</em:homepageURL>
                 <em:description>祛除 优酷/土豆/乐视/奇艺/ＰＰＳ/ＰＰＴＶ/17173/搜狐/酷6 的广告和黑屏</em:description>
-			</Description>
+        </Description>
         </em:localized>
         <em:localized>
-			<Description>
+        <Description>
                 <em:locale>zh-tw</em:locale>
                 <em:name>綠・播放器</em:name>
                 <em:creator>jc3213</em:creator>
@@ -38,10 +38,10 @@
                 <em:contributor>ywzhaiqi</em:contributor>
                 <em:homepageURL>http://jc3213.cwsurf.de/index.html</em:homepageURL>
                 <em:description>消除 優酷/土豆/樂視/奇藝/ＰＰＳ/ＰＰＴＶ/17173/搜狐/酷6 的廣告和黑屏</em:description>
-			</Description>
+        </Description>
         </em:localized>
         <em:localized>
-			<Description>
+        <Description>
                 <em:locale>ja</em:locale>
                 <em:name>すばらプレーヤー</em:name>
                 <em:creator>jc3213</em:creator>
@@ -51,7 +51,7 @@
                 <em:contributor>ywzhaiqi</em:contributor>
                 <em:homepageURL>http://jc3213.cwsurf.de/index.html</em:homepageURL>
                 <em:description>Youku/Tudou/Letv/iQiyi/PPS/PPTV/17173/Sohu/Ku6 の広告やブラックスクリーンを除きます</em:description>
-			</Description>
+        </Description>
         </em:localized>
         <em:targetApplication><!-- Firefox -->
             <Description>
