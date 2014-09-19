@@ -1,21 +1,23 @@
 const {classes: Cc, interfaces: Ci, results: Cr, utils: Cu} = Components;
 Cu.import('resource://gre/modules/NetUtil.jsm');
 
-function aRule() {}
-aRule.prototype = {
+var aURI = 'chrome://antiadsplayer/content/';
+
+function aCommon() {}
+aCommon.prototype = {
     PLAYERS: {
 /**  -------------------------------------------------------------------------------------------------------  */
         'youku_loader': {
-            'object': 'chrome://antiadsplayer/content/loader.swf',
+            'object': aURI + 'loader.swf',
             'target': /http:\/\/static\.youku\.com\/.*\/v\/swf\/loaders?\.swf/i
         },
         'youku_player': {
-            'object': 'chrome://antiadsplayer/content/player.swf',
+            'object': aURI + 'player.swf',
             'target': /http:\/\/static\.youku\.com\/.*\/v\/swf\/q?player.*\.swf/i
         },
 /**  -------------------------------------------------------------------------------------------------------  */
         'tudou_portal': {
-            'object': 'chrome://antiadsplayer/content/tudou.swf',
+            'object': aURI + 'tudou.swf',
             'target': /http:\/\/js\.tudouui\.com\/bin\/lingtong\/PortalPlayer.*\.swf/i
         },
         'tudou_olc': {
@@ -23,24 +25,24 @@ aRule.prototype = {
             'target': /http:\/\/js\.tudouui\.com\/bin\/player2\/olc.+\.swf/i
         },
         'tudou_social': {
-            'object': 'chrome://antiadsplayer/content/sp.swf',
+            'object': aURI + 'sp.swf',
             'target': /http:\/\/js\.tudouui\.com\/bin\/lingtong\/SocialPlayer.*\.swf/i
         },
 /**  -------------------------------------------------------------------------------------------------------  */
         'iqiyi': {
-            'object0': 'chrome://antiadsplayer/content/iqiyi_out.swf',
-            'object1': 'chrome://antiadsplayer/content/iqiyi5.swf',
-            'object2': 'chrome://antiadsplayer/content/iqiyi.swf',
+            'object0': aURI + 'iqiyi_out.swf',
+            'object1': aURI + 'iqiyi5.swf',
+            'object2': aURI + 'iqiyi.swf',
             'target': /https?:\/\/www\.iqiyi\.com\/(common\/flash)?player\/\d+\/(Main|Share)?Player.*\.swf/i
         },
 /**  -------------------------------------------------------------------------------------------------------  */
         'pps': {
-            'object': 'chrome://antiadsplayer/content/pps.swf',
+            'object': aURI + 'pps.swf',
             'target': /http:\/\/www\.iqiyi\.com\/player\/cupid\/common\/pps_flvplay_s\.swf/i
         },
 /**  -------------------------------------------------------------------------------------------------------  */
         'letv': {
-            'object': 'chrome://antiadsplayer/content/letv.swf',
+            'object': aURI + 'letv.swf',
             'target': /http:\/\/.*\.letv(cdn)?\.com\/.*(new)?player\/((C?SDK)?Letv|swf)Player\.swf/i
         },
         'letv_skin': {
@@ -49,46 +51,50 @@ aRule.prototype = {
         },
 /**  -------------------------------------------------------------------------------------------------------  */
         'pptv': {
-            'object': 'chrome://antiadsplayer/content/pplive.swf',
+            'object': aURI + 'pplive.swf',
             'target': /http:\/\/player.pplive.cn\/ikan\/.*\/player4player2\.swf/i
         },
         'pplive': {
-            'object': 'chrome://antiadsplayer/content/pplive_live.swf',
+            'object': aURI + 'pplive_live.swf',
             'target': /http:\/\/player.pplive.cn\/live\/.*\/player4live2\.swf/i
         },
 /**  -------------------------------------------------------------------------------------------------------  */
         'sohu': {
-            'object': 'chrome://antiadsplayer/content/sohu.swf',
+            'object': aURI + 'sohu.swf',
             'target': /http:\/\/(tv\.sohu\.com\/upload\/swf\/(?!live|sv)|[\d+\.]+\/).*\/(Main|PlayerShell)\.swf/i
         },
         'sohu2': {
-            'object': 'chrome://antiadsplayer/content/sohu2.swf',
+            'object': aURI + 'sohu2.swf',
             'target': /http:\/\/tv\.sohu\.com\/upload\/swf\/sv\d+\/Main\.swf/i
         },
         'sohu_live': {
-            'object': 'chrome://antiadsplayer/content/sohu_live.swf',
+            'object': aURI + 'sohu_live.swf',
             'target': /http:\/\/(tv\.sohu\.com\/upload\/swf\/live\/\d+|[\d+\.]+:\d+\/test\/player)\/Main\.swf/i
         },
 /**  -------------------------------------------------------------------------------------------------------  */
         '17173': {
-            'object': 'chrome://antiadsplayer/content/Player_file.swf',
+            'object': aURI + 'Player_file.swf',
             'target': /http:\/\/f\.v\.17173cdn\.com\/\d+\/flash\/Player_file\.swf/i
         },
         '17173_out': {
-            'object': 'chrome://antiadsplayer/content/Player_file_out.swf',
+            'object': aURI + 'Player_file_out.swf',
             'target': /http:\/\/f\.v\.17173cdn\.com\/(\d+\/)?flash\/Player_file_out\.swf/i
         },
         '17173_live': {
-            'object': 'chrome://antiadsplayer/content/Player_stream.swf',
-            'target': /http:\/\/f\.v\.17173cdn\.com\/\d+\/flash\/Player_stream.*\.swf/i
+            'object': aURI + 'Player_stream.swf',
+            'target': /http:\/\/f\.v\.17173cdn\.com\/\d+\/flash\/Player_stream(_firstpage)?\.swf/i
+        },
+        '17173_live_out': {
+            'object': aURI + 'Player_stream_out.swf',
+            'target': /http:\/\/f\.v\.17173cdn\.com\/\d+\/flash\/Player_stream_(custom)?Out\.swf/i
         },
 /**  -------------------------------------------------------------------------------------------------------  */
         'ku6_common': {
-            'object': 'chrome://antiadsplayer/content/Ku6.swf',
+            'object': aURI + 'Ku6.swf',
             'target': /http:\/\/player\.ku6cdn\.com\/default\/(\w+\/){2}\d+\/player\.swf/i
         },
         'ku6_out': {
-            'object': 'chrome://antiadsplayer/content/ku6_out.swf',
+            'object': aURI + 'ku6_out.swf',
             'target': /http:\/\/player\.ku6cdn\.com\/default\/out\/\d+\/player\.swf/i
         },
     },
@@ -283,7 +289,7 @@ var aRun;
 
 function startup(data, reason) {
     if (!aRun) {
-        aRun = new aRule();
+        aRun = new aCommon();
         aRun.register();
     }
 }
