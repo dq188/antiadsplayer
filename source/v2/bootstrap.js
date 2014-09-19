@@ -375,6 +375,7 @@ HttpHeaderVisitor.prototype = {
     visitHeader: function (aHeader, aValue) {
         if (aHeader.indexOf("Content-Type") !== -1) {
             if (aValue.indexOf("application/x-shockwave-flash") !== -1) {
+                console.log('This is the flash player!');
                 this._isFlash = true;
             }
         }
@@ -405,5 +406,7 @@ function install(data, reason) {
 }
 
 function uninstall(data, reason) {
-    OS.File.removeDir(aPath);
+    if (reason == ADDON_UNINSTALL) {
+        OS.File.removeDir(aPath);
+    }
 }
