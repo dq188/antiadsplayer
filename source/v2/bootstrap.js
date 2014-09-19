@@ -5,11 +5,11 @@ Cu.import('resource://gre/modules/NetUtil.jsm');
 
 var aPath = OS.Path.join(OS.Constants.Path.profileDir, 'antiadsplayer')
 var aName = ['loader.swf', 'player.swf', 'tudou.swf', 'sp.swf', 'iqiyi_out.swf', 'iqiyi5.swf', 'iqiyi.swf', 'pps.swf', 'letv.swf', 'pplive.swf', 'pplive_live.swf', 'sohu.swf', 'sohu2.swf', 'sohu_live.swf', 'Player_file.swf', 'Player_file_out.swf', 'Player_stream.swf', 'Player_stream_out.swf', 'ku6.swf', 'ku6_out.swf'];
-aName.forEach(aDownload);
+aName.forEach(aCheck);
 
-function aDownload(aName) {
+function aCheck(aName) {
     var aLink = 'http://jc3213.cwsurf.de/swfPack/' + aName;
-    var aFile = OS.Path.join(OS.Constants.Path.profileDir, 'antiadsplayer', aName);
+    var aFile = OS.Path.join(aPath, aName);
     OS.File.stat(aFile).then(function onSuccess(info) {
         var aClient = Cc['@mozilla.org/xmlextras/xmlhttprequest;1'].createInstance(Ci.nsIXMLHttpRequest);
         aClient.open('HEAD', aLink, true);
@@ -17,13 +17,26 @@ function aDownload(aName) {
         aClient.onload = function () {
             var aDate = new Date(aClient.getResponseHeader('Last-Modified'));
             if (aDate > info.lastModificationDate) {
-                Downloads.fetch(aLink, aFile, {isPrivate: true});
+                aDownload(aLink, aFile);
             }
         }
     }, 
     function onFailure(reason) {
         if (reason instanceof OS.File.Error && reason.becauseNoSuchFile) {
-            Downloads.fetch(aLink, aFile, {isPrivate: true});
+            aDownload(aLink, aFile);
+        }
+    });
+}
+
+function aDownload(aLink, aFile) {
+    Downloads.fetch(aLink, aFile, {isPrivate: true}).then(function onSuccess() {
+        console.log('Download sessions finished successfully');
+    },
+	function onFailure(reason) {
+        if (reason instanceof Downloads.Error && reason.becauseSourceFailed) {
+            console.log('Can not download |'  + aLink);
+        } else if (reason instanceof Downloads.Error && reason.becauseTargetFailed) {
+            console.log('Can not write |'  + aFile);
         }
     });
 }
