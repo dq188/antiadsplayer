@@ -1,23 +1,23 @@
 const {classes: Cc, interfaces: Ci, results: Cr, utils: Cu} = Components;
 Cu.import('resource://gre/modules/NetUtil.jsm');
 
-var aURI = 'chrome://antiadsplayer/content/';
+var aURI = 'chrome://antiadsplayer/content';
 
 function aCommon() {}
 aCommon.prototype = {
     PLAYERS: {
 /**  -------------------------------------------------------------------------------------------------------  */
         'youku_loader': {
-            'object': aURI + 'loader.swf',
+            'object': aURI + '/loader.swf',
             'target': /http:\/\/static\.youku\.com\/.*\/v\/swf\/loaders?\.swf/i
         },
         'youku_player': {
-            'object': aURI + 'player.swf',
+            'object': aURI + '/player.swf',
             'target': /http:\/\/static\.youku\.com\/.*\/v\/swf\/q?player.*\.swf/i
         },
 /**  -------------------------------------------------------------------------------------------------------  */
         'tudou_portal': {
-            'object': aURI + 'tudou.swf',
+            'object': aURI + '/tudou.swf',
             'target': /http:\/\/js\.tudouui\.com\/bin\/lingtong\/PortalPlayer.*\.swf/i
         },
         'tudou_olc': {
@@ -25,24 +25,24 @@ aCommon.prototype = {
             'target': /http:\/\/js\.tudouui\.com\/bin\/player2\/olc.+\.swf/i
         },
         'tudou_social': {
-            'object': aURI + 'sp.swf',
+            'object': aURI + '/sp.swf',
             'target': /http:\/\/js\.tudouui\.com\/bin\/lingtong\/SocialPlayer.*\.swf/i
         },
 /**  -------------------------------------------------------------------------------------------------------  */
         'iqiyi': {
-            'object0': aURI + 'iqiyi_out.swf',
-            'object1': aURI + 'iqiyi5.swf',
-            'object2': aURI + 'iqiyi.swf',
+            'object0': aURI + '/iqiyi_out.swf',
+            'object1': aURI + '/iqiyi5.swf',
+            'object2': aURI + '/iqiyi.swf',
             'target': /https?:\/\/www\.iqiyi\.com\/(common\/flash)?player\/\d+\/(Main|Share)?Player.*\.swf/i
         },
 /**  -------------------------------------------------------------------------------------------------------  */
         'pps': {
-            'object': aURI + 'pps.swf',
+            'object': aURI + '/pps.swf',
             'target': /http:\/\/www\.iqiyi\.com\/player\/cupid\/common\/pps_flvplay_s\.swf/i
         },
 /**  -------------------------------------------------------------------------------------------------------  */
         'letv': {
-            'object': aURI + 'letv.swf',
+            'object': aURI + '/letv.swf',
             'target': /http:\/\/.*\.letv(cdn)?\.com\/.*(new)?player\/((C?SDK)?Letv|swf)Player\.swf/i
         },
         'letv_skin': {
@@ -51,50 +51,50 @@ aCommon.prototype = {
         },
 /**  -------------------------------------------------------------------------------------------------------  */
         'pptv': {
-            'object': aURI + 'pplive.swf',
+            'object': aURI + '/pplive.swf',
             'target': /http:\/\/player.pplive.cn\/ikan\/.*\/player4player2\.swf/i
         },
         'pplive': {
-            'object': aURI + 'pplive_live.swf',
+            'object': aURI + '/pplive_live.swf',
             'target': /http:\/\/player.pplive.cn\/live\/.*\/player4live2\.swf/i
         },
 /**  -------------------------------------------------------------------------------------------------------  */
         'sohu': {
-            'object': aURI + 'sohu.swf',
+            'object': aURI + '/sohu.swf',
             'target': /http:\/\/(tv\.sohu\.com\/upload\/swf\/(?!live|sv)|[\d+\.]+\/).*\/(Main|PlayerShell)\.swf/i
         },
         'sohu2': {
-            'object': aURI + 'sohu2.swf',
+            'object': aURI + '/sohu2.swf',
             'target': /http:\/\/tv\.sohu\.com\/upload\/swf\/sv\d+\/Main\.swf/i
         },
         'sohu_live': {
-            'object': aURI + 'sohu_live.swf',
+            'object': aURI + '/sohu_live.swf',
             'target': /http:\/\/(tv\.sohu\.com\/upload\/swf\/live\/\d+|[\d+\.]+:\d+\/test\/player)\/Main\.swf/i
         },
 /**  -------------------------------------------------------------------------------------------------------  */
         '17173': {
-            'object': aURI + 'Player_file.swf',
+            'object': aURI + '/Player_file.swf',
             'target': /http:\/\/f\.v\.17173cdn\.com\/\d+\/flash\/Player_file\.swf/i
         },
         '17173_out': {
-            'object': aURI + 'Player_file_out.swf',
+            'object': aURI + '/Player_file_out.swf',
             'target': /http:\/\/f\.v\.17173cdn\.com\/(\d+\/)?flash\/Player_file_out\.swf/i
         },
         '17173_live': {
-            'object': aURI + 'Player_stream.swf',
+            'object': aURI + '/Player_stream.swf',
             'target': /http:\/\/f\.v\.17173cdn\.com\/\d+\/flash\/Player_stream(_firstpage)?\.swf/i
         },
         '17173_live_out': {
-            'object': aURI + 'Player_stream_out.swf',
+            'object': aURI + '/Player_stream_out.swf',
             'target': /http:\/\/f\.v\.17173cdn\.com\/\d+\/flash\/Player_stream_(custom)?Out\.swf/i
         },
 /**  -------------------------------------------------------------------------------------------------------  */
         'ku6_common': {
-            'object': aURI + 'Ku6.swf',
+            'object': aURI + '/Ku6.swf',
             'target': /http:\/\/player\.ku6cdn\.com\/default\/(\w+\/){2}\d+\/player\.swf/i
         },
         'ku6_out': {
-            'object': aURI + 'ku6_out.swf',
+            'object': aURI + '/ku6_out.swf',
             'target': /http:\/\/player\.ku6cdn\.com\/default\/out\/\d+\/player\.swf/i
         },
     },
