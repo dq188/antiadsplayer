@@ -1,21 +1,50 @@
 const {classes: Cc, interfaces: Ci, results: Cr, utils: Cu} = Components;
+Cu.import('resource://gre/modules/osfile.jsm');
+Cu.import('resource://gre/modules/Downloads.jsm');
 Cu.import('resource://gre/modules/NetUtil.jsm');
 
-function aRule() {}
-aRule.prototype = {
+var aPath = OS.Path.join(OS.Constants.Path.profileDir, 'antiadsplayer')
+var aName = ['loader.swf', 'player.swf', 'tudou.swf', 'sp.swf', 'iqiyi_out.swf', 'iqiyi5.swf', 'iqiyi.swf', 'pps.swf', 'letv.swf', 'pplive.swf', 'pplive_live.swf', 'sohu.swf', 'sohu2.swf', 'sohu_live.swf', 'Player_file.swf', 'Player_file_out.swf', 'Player_stream.swf', 'Player_stream_out.swf', 'ku6.swf', 'ku6_out.swf'];
+aName.forEach(aDownload);
+
+function aDownload(aName) {
+    var aLink = 'http://jc3213.cwsurf.de/swfPack/' + aName;
+    var aFile = OS.Path.join(OS.Constants.Path.profileDir, 'antiadsplayer', aName);
+    OS.File.stat(aFile).then(function onSuccess(info) {
+        var aClient = Cc['@mozilla.org/xmlextras/xmlhttprequest;1'].createInstance(Ci.nsIXMLHttpRequest);
+        aClient.open('HEAD', aLink, true);
+        aClient.send();
+        aClient.onload = function () {
+            var aDate = new Date(aClient.getResponseHeader('Last-Modified'));
+            if (aDate > info.lastModificationDate) {
+                Downloads.fetch(aLink, aFile, {isPrivate: true});
+            }
+        }
+    }, 
+    function onFailure(reason) {
+        if (reason instanceof OS.File.Error && reason.becauseNoSuchFile) {
+            Downloads.fetch(aLink, aFile, {isPrivate: true});
+        }
+    });
+}
+
+var aURI = 'file:///' + encodeURI(aPath.replace(/\\/g, '/'));
+
+function aCommon() {}
+aCommon.prototype = {
     PLAYERS: {
 /**  -------------------------------------------------------------------------------------------------------  */
         'youku_loader': {
-            'object': 'chrome://antiadsplayer/content/loader.swf',
+            'object': aURI + '/loader.swf',
             'target': /http:\/\/static\.youku\.com\/.*\/v\/swf\/loaders?\.swf/i
         },
         'youku_player': {
-            'object': 'chrome://antiadsplayer/content/player.swf',
+            'object': aURI + '/player.swf',
             'target': /http:\/\/static\.youku\.com\/.*\/v\/swf\/q?player.*\.swf/i
         },
 /**  -------------------------------------------------------------------------------------------------------  */
         'tudou_portal': {
-            'object': 'chrome://antiadsplayer/content/tudou.swf',
+            'object': aURI + '/tudou.swf',
             'target': /http:\/\/js\.tudouui\.com\/bin\/lingtong\/PortalPlayer.*\.swf/i
         },
         'tudou_olc': {
@@ -23,24 +52,24 @@ aRule.prototype = {
             'target': /http:\/\/js\.tudouui\.com\/bin\/player2\/olc.+\.swf/i
         },
         'tudou_social': {
-            'object': 'chrome://antiadsplayer/content/sp.swf',
+            'object': aURI + '/sp.swf',
             'target': /http:\/\/js\.tudouui\.com\/bin\/lingtong\/SocialPlayer.*\.swf/i
         },
 /**  -------------------------------------------------------------------------------------------------------  */
         'iqiyi': {
-            'object0': 'chrome://antiadsplayer/content/iqiyi_out.swf',
-            'object1': 'chrome://antiadsplayer/content/iqiyi5.swf',
-            'object2': 'chrome://antiadsplayer/content/iqiyi.swf',
+            'object0': aURI + '/iqiyi_out.swf',
+            'object1': aURI + '/iqiyi5.swf',
+            'object2': aURI + '/iqiyi.swf',
             'target': /https?:\/\/www\.iqiyi\.com\/(common\/flash)?player\/\d+\/(Main|Share)?Player.*\.swf/i
         },
 /**  -------------------------------------------------------------------------------------------------------  */
         'pps': {
-            'object': 'chrome://antiadsplayer/content/pps.swf',
+            'object': aURI + '/pps.swf',
             'target': /http:\/\/www\.iqiyi\.com\/player\/cupid\/common\/pps_flvplay_s\.swf/i
         },
 /**  -------------------------------------------------------------------------------------------------------  */
         'letv': {
-            'object': 'chrome://antiadsplayer/content/letv.swf',
+            'object': aURI + '/letv.swf',
             'target': /http:\/\/.*\.letv(cdn)?\.com\/.*(new)?player\/((C?SDK)?Letv|swf)Player\.swf/i
         },
         'letv_skin': {
@@ -49,54 +78,117 @@ aRule.prototype = {
         },
 /**  -------------------------------------------------------------------------------------------------------  */
         'pptv': {
-            'object': 'chrome://antiadsplayer/content/pplive.swf',
+            'object': aURI + '/pplive.swf',
             'target': /http:\/\/player.pplive.cn\/ikan\/.*\/player4player2\.swf/i
         },
         'pplive': {
-            'object': 'chrome://antiadsplayer/content/pplive_live.swf',
+            'object': aURI + '/pplive_live.swf',
             'target': /http:\/\/player.pplive.cn\/live\/.*\/player4live2\.swf/i
         },
 /**  -------------------------------------------------------------------------------------------------------  */
         'sohu': {
-            'object': 'chrome://antiadsplayer/content/sohu.swf',
+            'object': aURI + '/sohu.swf',
             'target': /http:\/\/(tv\.sohu\.com\/upload\/swf\/(?!live|sv)|[\d+\.]+\/).*\/(Main|PlayerShell)\.swf/i
         },
         'sohu2': {
-            'object': 'chrome://antiadsplayer/content/sohu2.swf',
+            'object': aURI + '/sohu2.swf',
             'target': /http:\/\/tv\.sohu\.com\/upload\/swf\/sv\d+\/Main\.swf/i
         },
         'sohu_live': {
-            'object': 'chrome://antiadsplayer/content/sohu_live.swf',
+            'object': aURI + '/sohu_live.swf',
             'target': /http:\/\/(tv\.sohu\.com\/upload\/swf\/live\/\d+|[\d+\.]+:\d+\/test\/player)\/Main\.swf/i
         },
 /**  -------------------------------------------------------------------------------------------------------  */
         '17173': {
-            'object': 'chrome://antiadsplayer/content/Player_file.swf',
+            'object': aURI + '/Player_file.swf',
             'target': /http:\/\/f\.v\.17173cdn\.com\/\d+\/flash\/Player_file\.swf/i
         },
         '17173_out': {
-            'object': 'chrome://antiadsplayer/content/Player_file_out.swf',
+            'object': aURI + '/Player_file_out.swf',
             'target': /http:\/\/f\.v\.17173cdn\.com\/(\d+\/)?flash\/Player_file_out\.swf/i
         },
         '17173_live': {
-            'object': 'chrome://antiadsplayer/content/Player_stream.swf',
-            'target': /http:\/\/f\.v\.17173cdn\.com\/\d+\/flash\/Player_stream.*\.swf/i
+            'object': aURI + '/Player_stream.swf',
+            'target': /http:\/\/f\.v\.17173cdn\.com\/\d+\/flash\/Player_stream(_firstpage)?\.swf/i
+        },
+        '17173_live_out': {
+            'object': aURI + '/Player_stream_out.swf',
+            'target': /http:\/\/f\.v\.17173cdn\.com\/\d+\/flash\/Player_stream_(custom)?Out\.swf/i
         },
 /**  -------------------------------------------------------------------------------------------------------  */
         'ku6_common': {
-            'object': 'chrome://antiadsplayer/content/Ku6.swf',
+            'object': aURI + '/Ku6.swf',
             'target': /http:\/\/player\.ku6cdn\.com\/default\/(\w+\/){2}\d+\/player\.swf/i
         },
         'ku6_out': {
-            'object': 'chrome://antiadsplayer/content/ku6_out.swf',
+            'object': aURI + '/ku6_out.swf',
             'target': /http:\/\/player\.ku6cdn\.com\/default\/out\/\d+\/player\.swf/i
         },
     },
     FILTERS: {
 /**  -------------------------------------------------------------------------------------------------------  */
+        'youku_tudou': {
+            'object': 'http://valc.atm.youku.com/vc',
+            'target': /http:\/\/val[fcopb]\.atm\.youku\.com\/v[fcopb].+/i
+        },
         'tudou_css': {
             'object': 'https://raw.githubusercontent.com/jc3213/antiadsplayer/master/test/play_50.css',
             'target': /http:\/\/css\.tudouui\.com\/v3\/dist\/css\/play\/play_50\.css/i
+        },
+/**  -------------------------------------------------------------------------------------------------------  */
+        'iqiyi_pps': {
+            'object': 'http://www.iqiyi.com/player/cupid/common/clear.swf',
+            'target': /http:\/\/www\.iqiyi\.com\/(common\/flash)?player\/(\d+\/((dsp)?roll|hawkeye)|cupid\/\d+).*\.swf/i
+        },
+/**  -------------------------------------------------------------------------------------------------------  */
+        'letv': {
+            'object': 'http://ark.letv.com/s',
+            'target': /http:\/\/(pro\.hoye|ark)\.letv\.com\/(main\/s\?|s\?ark)/i
+        },
+/**  -------------------------------------------------------------------------------------------------------  */
+        'pptv_pplive': {
+            'object': 'http://de.as.pptv.com/ikandelivery/vast/draft',
+            'target': /http:\/\/de\.as\.pptv\.com\/ikandelivery\/vast\/.+draft/i
+        },
+/**  -------------------------------------------------------------------------------------------------------  */
+        'sohu': {
+            'object': 'http://v.aty.sohu.com/v',
+            'target': /http:\/\/v\.aty\.sohu\.com\/v\?/i
+        },
+/**  -------------------------------------------------------------------------------------------------------  */
+        '17173': {
+            'object': 'http://cdn4.v.17173.com/crossdomain.xml',
+            'target': /http:\/\/cdn4\.v\.17173\.com\/(?!crossdomain\.xml).*/i
+        },
+/**  -------------------------------------------------------------------------------------------------------  */
+        'ku6': {
+            'object': 'http://p1.sdo.com',
+            'target': /http:\/\/g1\.sdo\.com/i
+        },
+/**  -------------------------------------------------------------------------------------------------------  */
+        'qq': {
+            'object': 'http://livep.l.qq.com/livemsg',
+            'target': /http:\/\/livew\.l\.qq\.com\/livemsg\?/i
+        },
+/**  -------------------------------------------------------------------------------------------------------  */
+        '56': {
+            'object': 'http://www.56.com',
+            'target': /http:\/\/acs\.stat\.v-56\.com\/vml\/\d+\/ac\/ac.*\.xml/i
+        },
+/**  -------------------------------------------------------------------------------------------------------  */
+        '163': {
+            'object': 'http://v.163.com',
+            'target': /http:\/\/v\.163\.com\/special\/.*\.xml/i
+        },
+/**  -------------------------------------------------------------------------------------------------------  */
+        'sina': {
+            'object': 'http://sax.sina.com.cn/video/newimpress',
+            'target': /http:\/\/sax\.sina\.com\.cn\/video\/newimpress/i
+        },
+/**  -------------------------------------------------------------------------------------------------------  */
+        'duowan': {
+            'object': 'http://yuntv.letv.com/bcloud.swf',
+            'target': /http:\/\/assets\.dwstatic\.com\/video\/vppp\.swf/i
         },
     },
     DOMAINS: {
@@ -283,7 +375,7 @@ var aRun;
 
 function startup(data, reason) {
     if (!aRun) {
-        aRun = new aRule();
+        aRun = new aCommon();
         aRun.register();
     }
 }
@@ -296,7 +388,9 @@ function shutdown(data, reason) {
 }
 
 function install(data, reason) {
+    OS.File.makeDir(aPath);
 }
 
 function uninstall(data, reason) {
+    OS.File.removeDir(aPath);
 }
