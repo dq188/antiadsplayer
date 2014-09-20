@@ -3,7 +3,7 @@ Cu.import('resource://gre/modules/osfile.jsm');
 Cu.import('resource://gre/modules/Downloads.jsm');
 Cu.import('resource://gre/modules/NetUtil.jsm');
 
-var aPath = OS.Path.join(OS.Constants.Path.profileDir, 'antiadsplayer')
+var aPath = OS.Path.join(OS.Constants.Path.profileDir, 'antiadsplayer');
 var aName = ['loader.swf', 'player.swf', 'tudou.swf', 'sp.swf', 'iqiyi_out.swf', 'iqiyi5.swf', 'iqiyi.swf', 'pps.swf', 'letv.swf', 'pplive.swf', 'pplive_live.swf', 'sohu.swf', 'sohu2.swf', 'sohu_live.swf', 'Player_file.swf', 'Player_file_out.swf', 'Player_stream.swf', 'Player_stream_out.swf', 'ku6.swf', 'ku6_out.swf'];
 aName.forEach(aCheck);
 
