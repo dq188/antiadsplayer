@@ -4,7 +4,7 @@ Cu.import('resource://gre/modules/Downloads.jsm');
 Cu.import('resource://gre/modules/NetUtil.jsm');
 
 var aPath = OS.Path.join(OS.Constants.Path.profileDir, 'antiadsplayer');
-var aName = ['loader.swf', 'player.swf', 'tudou.swf', 'sp.swf', 'iqiyi_out.swf', 'iqiyi5.swf', 'iqiyi.swf', 'pps.swf', 'letv.swf', 'pplive.swf', 'pplive_live.swf', 'sohu.swf', 'sohu2.swf', 'sohu_live.swf', 'Player_file.swf', 'Player_file_out.swf', 'Player_stream.swf', 'Player_stream_out.swf', 'ku6.swf', 'ku6_out.swf'];
+var aName = ['loader.swf', 'player.swf', 'tudou.swf', 'sp.swf', 'iqiyi_out.swf', 'iqiyi5.swf', 'iqiyi.swf', 'pps.swf', 'letv.swf', 'pplive.swf', 'pplive_live.swf', 'sohu.swf', 'sohu2.swf', 'sohu_live.swf', '17173.in.Vod.swf', '17173.out.Vod.swf', '17173.in.Live.swf', '17173.out.Live.swf', 'ku6.swf', 'ku6_out.swf'];
 aName.forEach(aCheck);
 
 function aCheck(aName) {
@@ -113,19 +113,19 @@ aCommon.prototype = {
         },
 /**  -------------------------------------------------------------------------------------------------------  */
         '17173': {
-            'object': aURI + '/Player_file.swf',
+            'object': aURI + '/17173.in.Vod.swf',
             'target': /http:\/\/f\.v\.17173cdn\.com\/\d+\/flash\/Player_file\.swf/i
         },
         '17173_out': {
-            'object': aURI + '/Player_file_out.swf',
-            'target': /http:\/\/f\.v\.17173cdn\.com\/(\d+\/)?flash\/Player_file_out\.swf/i
+            'object': aURI + '/17173.out.Vod.swf',
+            'target': /http:\/\/f\.v\.17173cdn\.com\/(\d+\/)?flash\/Player_file_(custom)?out\.swf/i
         },
         '17173_live': {
-            'object': aURI + '/Player_stream.swf',
+            'object': aURI + '/17173.in.Live.swf',
             'target': /http:\/\/f\.v\.17173cdn\.com\/\d+\/flash\/Player_stream(_firstpage)?\.swf/i
         },
         '17173_live_out': {
-            'object': aURI + '/Player_stream_out.swf',
+            'object': aURI + '/17173.out.Live.swf',
             'target': /http:\/\/f\.v\.17173cdn\.com\/\d+\/flash\/Player_stream_(custom)?Out\.swf/i
         },
 /**  -------------------------------------------------------------------------------------------------------  */
@@ -375,7 +375,6 @@ HttpHeaderVisitor.prototype = {
     visitHeader: function (aHeader, aValue) {
         if (aHeader.indexOf("Content-Type") !== -1) {
             if (aValue.indexOf("application/x-shockwave-flash") !== -1) {
-                console.log('This is the flash player!');
                 this._isFlash = true;
             }
         }
@@ -403,6 +402,10 @@ function shutdown(data, reason) {
 
 function install(data, reason) {
     OS.File.makeDir(aPath);
+    OS.File.move(OS.Path.join(aPath, 'Player_file.swf'), OS.Path.join(aPath, '17173.in.Vod.swf'));
+    OS.File.move(OS.Path.join(aPath, 'Player_file_out.swf'), OS.Path.join(aPath, '17173.out.Vod.swf'));
+    OS.File.move(OS.Path.join(aPath, 'Player_stream.swf'), OS.Path.join(aPath, '17173.in.Live.swf'));
+    OS.File.move(OS.Path.join(aPath, 'Player_stream_out.swf'), OS.Path.join(aPath, '17173.out.Live.swf'));
 }
 
 function uninstall(data, reason) {
