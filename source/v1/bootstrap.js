@@ -73,19 +73,19 @@ aCommon.prototype = {
         },
 /**  -------------------------------------------------------------------------------------------------------  */
         '17173': {
-            'object': aURI + '/Player_file.swf',
+            'object': aURI + '/17173.in.Vod.swf',
             'target': /http:\/\/f\.v\.17173cdn\.com\/\d+\/flash\/Player_file\.swf/i
         },
         '17173_out': {
-            'object': aURI + '/Player_file_out.swf',
-            'target': /http:\/\/f\.v\.17173cdn\.com\/(\d+\/)?flash\/Player_file_out\.swf/i
+            'object': aURI + '/17173.out.Vod.swf',
+            'target': /http:\/\/f\.v\.17173cdn\.com\/(\d+\/)?flash\/Player_file_(custom)?out\.swf/i
         },
         '17173_live': {
-            'object': aURI + '/Player_stream.swf',
+            'object': aURI + '/17173.in.Live.swf',
             'target': /http:\/\/f\.v\.17173cdn\.com\/\d+\/flash\/Player_stream(_firstpage)?\.swf/i
         },
         '17173_live_out': {
-            'object': aURI + '/Player_stream_out.swf',
+            'object': aURI + '/17173.out.Live.swf',
             'target': /http:\/\/f\.v\.17173cdn\.com\/\d+\/flash\/Player_stream_(custom)?Out\.swf/i
         },
 /**  -------------------------------------------------------------------------------------------------------  */
