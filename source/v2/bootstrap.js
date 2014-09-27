@@ -4,7 +4,7 @@ Cu.import('resource://gre/modules/Downloads.jsm');
 Cu.import('resource://gre/modules/NetUtil.jsm');
 
 var aPath = OS.Path.join(OS.Constants.Path.profileDir, 'antiadsplayer');
-var aName = ['loader.swf', 'player.swf', 'tudou.swf', 'sp.swf', 'iqiyi_out.swf', 'iqiyi5.swf', 'iqiyi.swf', 'pps.swf', 'letv.swf', 'pplive.swf', 'pplive_live.swf', 'sohu.swf', 'sohu2.swf', 'sohu_live.swf', '17173.in.Vod.swf', '17173.out.Vod.swf', '17173.in.Live.swf', '17173.out.Live.swf', 'ku6.swf', 'ku6_out.swf'];
+var aName = ['loader.swf', 'player.swf', 'tudou.swf', 'sp.swf', 'iqiyi_out.swf', 'iqiyi5.swf', 'iqiyi.swf', 'pps.swf', 'letv.swf', 'pptv.in.Ikan.swf', 'pplive_live.swf', 'sohu.swf', 'sohu2.swf', 'sohu_live.swf', '17173.in.Vod.swf', '17173.out.Vod.swf', '17173.in.Live.swf', '17173.out.Live.swf', 'ku6.swf', 'ku6_out.swf'];
 aName.forEach(aCheck);
 
 function aCheck(aName) {
@@ -91,7 +91,7 @@ aCommon.prototype = {
         },
 /**  -------------------------------------------------------------------------------------------------------  */
         'pptv': {
-            'object': aURI + '/pplive.swf',
+            'object': aURI + '/pptv.in.Ikan.swf',
             'target': /http:\/\/player.pplive.cn\/ikan\/.*\/player4player2\.swf/i
         },
         'pplive': {
@@ -402,6 +402,7 @@ function shutdown(data, reason) {
 
 function install(data, reason) {
     OS.File.makeDir(aPath);
+    OS.File.move(OS.Path.join(aPath, 'pplive.swf'), OS.Path.join(aPath, 'pptv.in.Ikan.swf'));
     OS.File.move(OS.Path.join(aPath, 'Player_file.swf'), OS.Path.join(aPath, '17173.in.Vod.swf'));
     OS.File.move(OS.Path.join(aPath, 'Player_file_out.swf'), OS.Path.join(aPath, '17173.out.Vod.swf'));
     OS.File.move(OS.Path.join(aPath, 'Player_stream.swf'), OS.Path.join(aPath, '17173.in.Live.swf'));
