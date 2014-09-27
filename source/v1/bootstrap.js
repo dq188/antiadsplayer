@@ -43,7 +43,7 @@ aCommon.prototype = {
 /**  -------------------------------------------------------------------------------------------------------  */
         'letv': {
             'object': aURI + '/letv.swf',
-            'target': /http:\/\/.*\.letv(cdn)?\.com\/.*(new)?player\/((C?SDK)?Letv|swf)Player\.swf/i
+            'target': /http:\/\/.*\.letv(cdn)?\.com\/.*(new)?player\/((SDK)?Letv|swf)Player\.swf/i
         },
         'letv_skin': {
             'object': 'http://player.letvcdn.com/p/201407/24/15/newplayer/1/SSLetvPlayer.swf',
