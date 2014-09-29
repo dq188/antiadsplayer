@@ -60,7 +60,7 @@ aCommon.prototype = {
         },
 /**  -------------------------------------------------------------------------------------------------------  */
         'sohu': {
-            'object': aURI + '/sohu.inbj.Live.swf',
+            'object': aURI + '/sohu.inyy.Lite.swf',
             'target': /http:\/\/(tv\.sohu\.com\/upload\/swf\/(?!live|sv)|[\d+\.]+\/).*\/(Main|PlayerShell)\.swf/i
         },
         'sohu2': {
@@ -68,7 +68,7 @@ aCommon.prototype = {
             'target': /http:\/\/tv\.sohu\.com\/upload\/swf\/sv\d+\/Main\.swf/i
         },
         'sohu_live': {
-            'object': aURI + '/sohu.inyy.Lite.swf',
+            'object': aURI + '/sohu.inbj.Live.swf',
             'target': /http:\/\/(tv\.sohu\.com\/upload\/swf\/live\/\d+|[\d+\.]+:\d+\/test\/player)\/Main\.swf/i
         },
 /**  -------------------------------------------------------------------------------------------------------  */
