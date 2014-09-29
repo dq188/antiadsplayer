@@ -17,17 +17,17 @@ function aCheck(aName) {
     aClient.onload = function () {
       var aDate = new Date(aClient.getResponseHeader('Last-Modified'));
       if (aDate > info.lastModificationDate) {
-        console.log(aName + 'is out of date');
+        console.log(aName + ' is out of date');
         aDownload(aLink, aFile);
       }
       else (aDate <= info.lastModificationDate) {
-        console.log(aName + 'is up to date');
+        console.log(aName + ' is up to date');
       }
     }
   }, 
   function onFailure(reason) {
     if (reason instanceof OS.File.Error && reason.becauseNoSuchFile) {
-      console.log('Can not find' + aName);
+      console.log('Can not find ' + aName);
       aDownload(aLink, aFile);
     }
   });
@@ -39,9 +39,9 @@ function aDownload(aLink, aFile) {
   },
 	function onFailure(reason) {
     if (reason instanceof Downloads.Error && reason.becauseSourceFailed) {
-      console.log('Can not download |'  + aLink);
+      console.log('Can not download '  + aLink);
     } else if (reason instanceof Downloads.Error && reason.becauseTargetFailed) {
-      console.log('Can not write |'  + aFile);
+      console.log('Can not write '  + aFile);
     }
   });
 }
