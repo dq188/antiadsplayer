@@ -39,9 +39,9 @@ function aDownload(aLink, aFile) {
   },
 	function onFailure(reason) {
     if (reason instanceof Downloads.Error && reason.becauseSourceFailed) {
-      console.log('Can not download '  + aLink);
+      console.log('Can not download ' + aLink);
     } else if (reason instanceof Downloads.Error && reason.becauseTargetFailed) {
-      console.log('Can not write '  + aFile);
+      console.log('Can not write ' + aFile);
     }
   });
 }
