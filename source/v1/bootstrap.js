@@ -51,7 +51,7 @@ aCommon.prototype = {
         },
 /**  -------------------------------------------------------------------------------------------------------  */
         'pptv': {
-            'object': aURI + '/pplive.swf',
+            'object': aURI + '/pptv.in.Ikan.swf',
             'target': /http:\/\/player.pplive.cn\/ikan\/.*\/player4player2\.swf/i
         },
         'pplive': {
@@ -60,15 +60,15 @@ aCommon.prototype = {
         },
 /**  -------------------------------------------------------------------------------------------------------  */
         'sohu': {
-            'object': aURI + '/sohu.swf',
+            'object': aURI + '/sohu.inbj.Live.swf',
             'target': /http:\/\/(tv\.sohu\.com\/upload\/swf\/(?!live|sv)|[\d+\.]+\/).*\/(Main|PlayerShell)\.swf/i
         },
         'sohu2': {
-            'object': aURI + '/sohu2.swf',
+            'object': aURI + '/sohu.injs.Lite.swf',
             'target': /http:\/\/tv\.sohu\.com\/upload\/swf\/sv\d+\/Main\.swf/i
         },
         'sohu_live': {
-            'object': aURI + '/sohu_live.swf',
+            'object': aURI + '/sohu.inyy.Lite.swf',
             'target': /http:\/\/(tv\.sohu\.com\/upload\/swf\/live\/\d+|[\d+\.]+:\d+\/test\/player)\/Main\.swf/i
         },
 /**  -------------------------------------------------------------------------------------------------------  */
@@ -90,11 +90,11 @@ aCommon.prototype = {
         },
 /**  -------------------------------------------------------------------------------------------------------  */
         'ku6_common': {
-            'object': aURI + '/Ku6.swf',
+            'object': aURI + '/ku6_in_player.swf',
             'target': /http:\/\/player\.ku6cdn\.com\/default\/(\w+\/){2}\d+\/player\.swf/i
         },
         'ku6_out': {
-            'object': aURI + '/ku6_out.swf',
+            'object': aURI + '/ku6_out_player.swf',
             'target': /http:\/\/player\.ku6cdn\.com\/default\/out\/\d+\/player\.swf/i
         },
     },
