@@ -17,12 +17,14 @@ function aCheck(aName) {
     aClient.onload = function () {
       var aDate = new Date(aClient.getResponseHeader('Last-Modified'));
       if (aDate > info.lastModificationDate) {
+        console.log(aName + 'is out of date');
         aDownload(aLink, aFile);
       }
     }
   }, 
   function onFailure(reason) {
     if (reason instanceof OS.File.Error && reason.becauseNoSuchFile) {
+      console.log('Can not find' + aName);
       aDownload(aLink, aFile);
     }
   });
