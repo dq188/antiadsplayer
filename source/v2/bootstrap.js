@@ -16,18 +16,21 @@ function aCheck(aName) {
     aClient.send();
     aClient.onload = function () {
       var aDate = new Date(aClient.getResponseHeader('Last-Modified'));
+      var aSize = aClient.getResponseHeader('Content-Length');
       if (aDate > info.lastModificationDate) {
         console.log(aName + ' is out of date');
         aDownload(aLink, aFile);
-      }
-      else if (aDate <= info.lastModificationDate) {
-        console.log(aName + ' is up to date');
+      } else if (aSize != info.size) {
+        console.log(aName + ' is not funcional');
+        aDownload(aLink, aFile);
+      } else {
+        console.log(aName + ' is ready');
       }
     }
   }, 
   function onFailure(reason) {
     if (reason instanceof OS.File.Error && reason.becauseNoSuchFile) {
-      console.log('Can not find ' + aName);
+      console.log(aName + ' is not exsit');
       aDownload(aLink, aFile);
     }
   });
@@ -35,13 +38,13 @@ function aCheck(aName) {
 
 function aDownload(aLink, aFile) {
   Downloads.fetch(aLink, aFile, {isPrivate: true}).then(function onSuccess() {
-    console.log('Download sessions finished successfully');
+    console.log(aName + ' download session complete');
   },
-	function onFailure(reason) {
+  function onFailure(reason) {
     if (reason instanceof Downloads.Error && reason.becauseSourceFailed) {
-      console.log('Can not download ' + aLink);
+      console.log('Can not read from ' + aLink);
     } else if (reason instanceof Downloads.Error && reason.becauseTargetFailed) {
-      console.log('Can not write ' + aFile);
+      console.log('Can not write to ' + aFile);
     }
   });
 }
