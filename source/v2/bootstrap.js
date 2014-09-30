@@ -20,7 +20,7 @@ function aCheck(aName) {
         console.log(aName + ' is out of date');
         aDownload(aLink, aFile);
       }
-      else (aDate <= info.lastModificationDate) {
+      else if (aDate <= info.lastModificationDate) {
         console.log(aName + ' is up to date');
       }
     }
