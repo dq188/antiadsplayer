@@ -21,7 +21,7 @@ function aCheck(aName) {
         console.log(aName + ' is out of date');
         aDownload(aLink, aFile);
       } else if (aSize != info.size) {
-        console.log(aName + ' is not funcional');
+        console.log(aName + ' is not functional');
         aDownload(aLink, aFile);
       } else {
         console.log(aName + ' is ready');
