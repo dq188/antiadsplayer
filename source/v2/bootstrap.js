@@ -27,7 +27,7 @@ function aCheck(aName) {
         console.log(aName + ' is ready');
       }
     }
-  }, 
+  },
   function onFailure(reason) {
     if (reason instanceof OS.File.Error && reason.becauseNoSuchFile) {
       console.log(aName + ' is not exsit');
