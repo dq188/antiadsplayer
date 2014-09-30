@@ -137,7 +137,7 @@ aCommon.prototype = {
       'target': /http:\/\/f\.v\.17173cdn\.com\/\d+\/flash\/Player_stream_(custom)?Out\.swf/i
     },
 /**  -------------------------------------------------------------------------------------------------------  */
-    'ku6_common': {
+    'ku6': {
       'object': aURI + '/ku6_in_player.swf',
       'target': /http:\/\/player\.ku6cdn\.com\/default\/(\w+\/){2}\d+\/player\.swf/i
     },
