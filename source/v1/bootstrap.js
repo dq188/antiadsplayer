@@ -71,6 +71,10 @@ aCommon.prototype = {
       'object': aURI + '/sohu.inbj.Live.swf',
       'target': /http:\/\/(tv\.sohu\.com\/upload\/swf\/live\/\d+|[\d+\.]+:\d+\/test\/player)\/Main\.swf/i
     },
+    'sohu_skin': {
+      'object': aURI + '/sohu.inyy+injs.Lite.s1.swf',
+      'target': /http\:\/\/tv\.sohu\.com\/upload\/swf(\/live)?\/\d+\/skins\/s1\.swf/i
+    },
 /**  -------------------------------------------------------------------------------------------------------  */
     '17173': {
       'object': aURI + '/17173.in.Vod.swf',
@@ -89,13 +93,22 @@ aCommon.prototype = {
       'target': /http:\/\/f\.v\.17173cdn\.com\/\d+\/flash\/Player_stream_(custom)?Out\.swf/i
     },
 /**  -------------------------------------------------------------------------------------------------------  */
-    'ku6_common': {
+    'ku6': {
       'object': aURI + '/ku6_in_player.swf',
       'target': /http:\/\/player\.ku6cdn\.com\/default\/(\w+\/){2}\d+\/player\.swf/i
     },
     'ku6_out': {
       'object': aURI + '/ku6_out_player.swf',
       'target': /http:\/\/player\.ku6cdn\.com\/default\/out\/\d+\/player\.swf/i
+    },
+/**  -------------------------------------------------------------------------------------------------------  */
+    '56': {
+      'object': aURI + '/56.in.NM.swf',
+      'target': /http\:\/\/(s1|www)\.56(img)?\.com\/flashApp\/v_player.(?!tm).*\.swf/i
+    },
+    '56_danmu': {
+      'object': aURI + '/56.in.TM.swf',
+      'target': /http\:\/\/s1\.56img\.com\/flashApp\/v_player_tm.*\.swf/i
     },
   },
   FILTERS: {
