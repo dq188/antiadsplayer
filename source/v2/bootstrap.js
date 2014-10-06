@@ -4,7 +4,7 @@ Cu.import('resource://gre/modules/Downloads.jsm');
 Cu.import('resource://gre/modules/NetUtil.jsm');
 
 var aPath = OS.Path.join(OS.Constants.Path.profileDir, 'antiadsplayer');
-var aName = ['loader.swf', 'player.swf', 'tudou.swf', 'sp.swf', 'iqiyi_out.swf', 'iqiyi5.swf', 'iqiyi.swf', 'pps.swf', 'letv.swf', 'pptv.in.Ikan.swf', 'pplive_live.swf', 'sohu.injs.Lite.swf', 'sohu.inyy.Lite.swf', 'sohu.inbj.Live.swf', '17173.in.Vod.swf', '17173.out.Vod.swf', '17173.in.Live.swf', '17173.out.Live.swf', 'ku6_in_player.swf', 'ku6_out_player.swf'];
+var aName = ['loader.swf', 'player.swf', 'tudou.swf', 'sp.swf', 'iqiyi_out.swf', 'iqiyi5.swf', 'iqiyi.swf', 'pps.swf', 'letv.swf', 'pptv.in.Ikan.swf', 'pplive_live.swf', 'sohu.injs.Lite.swf', 'sohu.inyy.Lite.swf', 'sohu.inbj.Live.swf', 'sohu.inyy+injs.Lite.s1.swf', '17173.in.Vod.swf', '17173.out.Vod.swf', '17173.in.Live.swf', '17173.out.Live.swf', 'ku6_in_player.swf', 'ku6_out_player.swf', '56.in.NM.swf', '56.in.TM.swf'];
 aName.forEach(aCheck);
 
 function aCheck(aName) {
@@ -117,6 +117,10 @@ aCommon.prototype = {
       'object': aURI + '/sohu.inbj.Live.swf',
       'target': /http:\/\/(tv\.sohu\.com\/upload\/swf\/live\/\d+|[\d+\.]+:\d+\/test\/player)\/Main\.swf/i
     },
+    'sohu_skin': {
+      'object': aURI + '/sohu.inyy+injs.Lite.s1.swf',
+      'target': /http\:\/\/tv\.sohu\.com\/upload\/swf(\/live)?\/\d+\/skins\/s1\.swf/i
+    },
 /**  -------------------------------------------------------------------------------------------------------  */
     '17173': {
       'object': aURI + '/17173.in.Vod.swf',
@@ -143,16 +147,26 @@ aCommon.prototype = {
       'object': aURI + '/ku6_out_player.swf',
       'target': /http:\/\/player\.ku6cdn\.com\/default\/out\/\d+\/player\.swf/i
     },
+/**  -------------------------------------------------------------------------------------------------------  */
+    '56': {
+      'object': aURI + '/56.in.NM.swf',
+      'target': /http\:\/\/(s1|www)\.56(img)?\.com\/flashApp\/v_player.(?!tm).*\.swf/i
+    },
+    '56_danmu': {
+      'object': aURI + '/56.in.TM.swf',
+      'target': /http\:\/\/s1\.56img\.com\/flashApp\/v_player_tm.*\.swf/i
+    },
   },
   FILTERS: {
+/**  -------------------------------------------------------------------------------------------------------  */
+    'tudou_css': {
+      'object': 'https://raw.githubusercontent.com/jc3213/antiadsplayer/master/test/play_50.css',
+      'target': /http:\/\/css\.tudouui\.com\/v3\/dist\/css\/play\/play_50\.css/i
+    },
 /**  -------------------------------------------------------------------------------------------------------  */
     'youku_tudou': {
       'object': 'http://valc.atm.youku.com/vc',
       'target': /http:\/\/val[fcopb]\.atm\.youku\.com\/v[fcopb].+/i
-    },
-    'tudou_css': {
-      'object': 'https://raw.githubusercontent.com/jc3213/antiadsplayer/master/test/play_50.css',
-      'target': /http:\/\/css\.tudouui\.com\/v3\/dist\/css\/play\/play_50\.css/i
     },
 /**  -------------------------------------------------------------------------------------------------------  */
     'iqiyi_pps': {
