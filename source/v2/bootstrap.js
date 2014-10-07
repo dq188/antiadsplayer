@@ -4,7 +4,7 @@ Cu.import('resource://gre/modules/Downloads.jsm');
 Cu.import('resource://gre/modules/NetUtil.jsm');
 
 var aPath = OS.Path.join(OS.Constants.Path.profileDir, 'antiadsplayer');
-var aName = ['loader.swf', 'player.swf', 'tudou.swf', 'sp.swf', 'iqiyi_out.swf', 'iqiyi5.swf', 'iqiyi.swf', 'pps.swf', 'letv.swf', 'pptv.in.Ikan.swf', 'pplive_live.swf', 'sohu.injs.Lite.swf', 'sohu.inyy.Lite.swf', 'sohu.inbj.Live.swf', 'sohu.inyy+injs.Lite.s1.swf', '17173.in.Vod.swf', '17173.out.Vod.swf', '17173.in.Live.swf', '17173.out.Live.swf', 'ku6_in_player.swf', 'ku6_out_player.swf', '56.in.NM.swf', '56.in.TM.swf'];
+var aName = ['loader.swf', 'player.swf', 'tudou.swf', 'sp.swf', 'iqiyi_out.swf', 'iqiyi5.swf', 'iqiyi.swf', 'pps.swf', 'letv.swf', 'letv.in.Live.swf', 'pptv.in.Ikan.swf', 'pplive_live.swf', 'sohu.injs.Lite.swf', 'sohu.inyy.Lite.swf', 'sohu.inbj.Live.swf', 'sohu.inyy+injs.Lite.s1.swf', '17173.in.Vod.swf', '17173.out.Vod.swf', '17173.in.Live.swf', '17173.out.Live.swf', 'ku6_in_player.swf', 'ku6_out_player.swf', '56.in.NM.swf', '56.in.TM.swf'];
 aName.forEach(aCheck);
 
 function aCheck(aName) {
@@ -95,6 +95,10 @@ aCommon.prototype = {
       'object': 'http://player.letvcdn.com/p/201407/24/15/newplayer/1/SSLetvPlayer.swf',
       'target': /http:\/\/player\.letvcdn\.com\/p\/((?!15)\d+\/){3}newplayer\/1\/S?SLetvPlayer\.swf/i
     },
+    'letv_live': {
+      'object': aURI + '/letv.in.Live.swf',
+      'target': /http:\/\/player\.letvcdn\.com\/.*\/newplayer\/(SDK)?LivePlayer\.swf/i
+    },
 /**  -------------------------------------------------------------------------------------------------------  */
     'pptv': {
       'object': aURI + '/pptv.in.Ikan.swf',
@@ -113,13 +117,13 @@ aCommon.prototype = {
       'object': aURI + '/sohu.injs.Lite.swf',
       'target': /http:\/\/tv\.sohu\.com\/upload\/swf\/sv\d+\/Main\.swf/i
     },
-    'sohu_live': {
-      'object': aURI + '/sohu.inbj.Live.swf',
-      'target': /http:\/\/(tv\.sohu\.com\/upload\/swf\/live\/\d+|[\d+\.]+:\d+\/test\/player)\/Main\.swf/i
-    },
     'sohu_skin': {
       'object': aURI + '/sohu.inyy+injs.Lite.s1.swf',
       'target': /http\:\/\/tv\.sohu\.com\/upload\/swf(\/live)?\/\d+\/skins\/s1\.swf/i
+    },
+    'sohu_live': {
+      'object': aURI + '/sohu.inbj.Live.swf',
+      'target': /http:\/\/(tv\.sohu\.com\/upload\/swf\/live\/\d+|[\d+\.]+:\d+\/test\/player)\/Main\.swf/i
     },
 /**  -------------------------------------------------------------------------------------------------------  */
     '17173': {
@@ -150,11 +154,11 @@ aCommon.prototype = {
 /**  -------------------------------------------------------------------------------------------------------  */
     '56': {
       'object': aURI + '/56.in.NM.swf',
-      'target': /http\:\/\/(s1|www)\.56(img)?\.com\/flashApp\/v_player.(?!tm).*\.swf/i
+      'target': /http:\/\/(www|s1)\.56(img)?\.com\/flashApp\/v_player.(?!tm).*\.swf/i
     },
     '56_danmu': {
       'object': aURI + '/56.in.TM.swf',
-      'target': /http\:\/\/s1\.56img\.com\/flashApp\/v_player_tm.*\.swf/i
+      'target': /http:\/\/s1\.56img\.com\/flashApp\/v_player_tm.*\.swf/i
     },
   },
   FILTERS: {
@@ -176,7 +180,7 @@ aCommon.prototype = {
 /**  -------------------------------------------------------------------------------------------------------  */
     'letv': {
       'object': 'http://ark.letv.com/s',
-      'target': /http:\/\/(pro\.hoye|ark)\.letv\.com\/(main\/s\?|s\?ark)/i
+      'target': /http:\/\/ark\.letv\.com\/s\?ark/i
     },
 /**  -------------------------------------------------------------------------------------------------------  */
     'pptv_pplive': {
@@ -292,6 +296,7 @@ aCommon.prototype = {
         aSubject.QueryInterface(Ci.nsITraceableChannel);
         newListener.originalListener = aSubject.setNewListener(newListener);
         newListener.rule = rule;
+        console.log('Filter is working for ' + i);
         break;
       }
     }
@@ -318,6 +323,7 @@ aCommon.prototype = {
         aSubject.QueryInterface(Ci.nsITraceableChannel);
         newListener.originalListener = aSubject.setNewListener(newListener);
         newListener.rule = rule;
+        console.log('Player is working for ' + i);
         break;
       }
     }
