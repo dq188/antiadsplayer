@@ -15,38 +15,38 @@ if (aLocale == 'en-US') {
     fileready: ' is ready to serve',
     filenotexist: ' is not exist',
     filedownloaded: ' download session complete',
-    remotefailed: 'Can not load from ',
-    localfailed: 'Can not write to ',
+    remotefailed: ' failed to load remote file',
+    localfailed: ' failed to save local file',
   };
 } else if (aLocale == 'ja') {
   var aLang = {
-    needupdate: ' \u306E\u6700\u65B0\u7248\u304C\u767A\u898B\u3057\u307E\u3057\u305F',
+    needupdate: ' \u306E\u6700\u65B0\u7248\u767A\u898B',
     filecorrupted: ' \u304C\u58CA\u308C\u3066\u3044\u308B\u53EF\u80FD\u6027\u304C\u3042\u308A\u307E\u3059',
-    fileready: ' \u6E96\u5099\u5B8C\u4E86\u3057\u307E\u3057\u305F',
+    fileready: ' \u6E96\u5099\u5B8C\u4E86',
     filenotexist: ' \u304C\u5B58\u5728\u3057\u307E\u305B\u3093',
-    filedownloaded: ' \u30C0\u30A6\u30F3\u30ED\u30FC\u30C9\u5B8C\u4E86\u3057\u307E\u3057\u305F',
-    remotefailed: '\u8AAD\u307F\u8FBC\u307F\u30A8\u30E9\u30FC ',
-    localfailed: '\u66F8\u304D\u8FBC\u307F\u30A8\u30E9\u30FC ',
+    filedownloaded: ' \u30C0\u30A6\u30F3\u30ED\u30FC\u30C9\u5B8C\u4E86',
+    remotefailed: ' \u306E\u8AAD\u307F\u8FBC\u307F\u306B\u5931\u6557',
+    localfailed: ' \u306E\u66F8\u304D\u8FBC\u307F\u306B\u5931\u6557',
   };
 } else if (aLocale == 'zh-CN') {
   var aLang = {
     needupdate: ' \u9700\u8981\u66F4\u65B0',
     filecorrupted: ' \u6587\u4EF6\u53EF\u80FD\u5DF2\u635F\u574F',
-    fileready: ' \u5DF2\u51C6\u5907\u597D',
+    fileready: ' \u5DF2\u5C31\u4F4D',
     filenotexist: ' \u4E0D\u5B58\u5728',
     filedownloaded: ' \u4E0B\u8F7D\u5B8C\u6210',
-    remotefailed: '\u65E0\u6CD5\u83B7\u53D6 ',
-    localfailed: '\u65E0\u6CD5\u5199\u5165 ',
+    remotefailed: ' \u52A0\u8F7D\u6587\u4EF6\u5931\u8D25',
+    localfailed: ' \u4FDD\u5B58\u6587\u4EF6\u5931\u8D25',
   };
 } else if (aLocale == 'zh-TW') {
   var aLang = {
     needupdate: ' \u9700\u8981\u66F4\u65B0',
     filecorrupted: ' \u6587\u4EF6\u53EF\u80FD\u5DF2\u7D93\u640D\u58DE',
-    fileready: ' \u5DF2\u51C6\u5099\u5C31\u7DD2',
+    fileready: ' \u5DF2\u5C31\u7DD2',
     filenotexist: ' \u4E0D\u5B58\u5728',
     filedownloaded: ' \u4E0B\u8F09\u6210\u529F',
-    remotefailed: '\u7121\u6CD5\u52A0\u8F09 ',
-    localfailed: '\u7121\u6CD5\u5BEB\u5165 ',
+    remotefailed: ' \u7121\u6CD5\u8B80\u53D6\u6587\u4EF6',
+    localfailed: ' \u7121\u6CD5\u7DE9\u5B58\u6587\u4EF6',
   };
 } else {
   console.log('Your locale is not supported');
@@ -85,9 +85,9 @@ function aDownload(aLink, aFile, aName) {
     console.log(aName + aLang.filedownloaded);
   }, function onFailure(reason) {
     if (reason instanceof Downloads.Error && reason.becauseSourceFailed) {
-      console.log(aLang.remotefailed + aLink);
+      console.log(aLink + aLang.remotefailed);
     } else if (reason instanceof Downloads.Error && reason.becauseTargetFailed) {
-      console.log(aLang.localfailed + aFile);
+      console.log(aFile + aLang.localfailed);
     } else {
       console.log(reason);
     }
