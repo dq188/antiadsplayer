@@ -7,6 +7,51 @@ var aPath = OS.Path.join(OS.Constants.Path.profileDir, 'antiadsplayer');
 var aName = ['loader.swf', 'player.swf', 'tudou.swf', 'sp.swf', 'iqiyi_out.swf', 'iqiyi5.swf', 'iqiyi.swf', 'pps.swf', 'letv.swf', 'letv.in.Live.swf', 'pptv.in.Ikan.swf', 'pplive_live.swf', 'sohu.injs.Lite.swf', 'sohu.inyy.Lite.swf', 'sohu.inbj.Live.swf', 'sohu.inyy+injs.Lite.s1.swf', '17173.in.Vod.swf', '17173.out.Vod.swf', '17173.in.Live.swf', '17173.out.Live.swf', 'ku6_in_player.swf', 'ku6_out_player.swf', '56.in.NM.swf', '56.in.TM.swf'];
 aName.forEach(aCheck);
 
+var aLocale = Cc['@mozilla.org/preferences-service;1'].getService(Ci.nsIPrefBranch).getComplexValue('general.useragent.locale', Ci.nsISupportsString).data;
+if (aLocale == 'en-US') {
+  var aLang = {
+    needupdate: ' is out of date',
+    filecorrupted: ' may be corrupted',
+    fileready: ' is ready to serve',
+    filenotexist: ' is not exist',
+    filedownloaded: ' download session complete',
+    remotefailed: 'Can not load from ',
+    localfailed: 'Can not write to ',
+  };
+} else if (aLocale == 'ja') {
+  var aLang = {
+    needupdate: ' \u306E\u6700\u65B0\u7248\u304C\u767A\u898B\u3057\u307E\u3057\u305F',
+    filecorrupted: ' \u304C\u58CA\u308C\u3066\u3044\u308B\u53EF\u80FD\u6027\u304C\u3042\u308A\u307E\u3059',
+    fileready: ' \u6E96\u5099\u5B8C\u4E86\u3057\u307E\u3057\u305F',
+    filenotexist: ' \u304C\u5B58\u5728\u3057\u307E\u305B\u3093',
+    filedownloaded: ' \u30C0\u30A6\u30F3\u30ED\u30FC\u30C9\u5B8C\u4E86\u3057\u307E\u3057\u305F',
+    remotefailed: '\u8AAD\u307F\u8FBC\u307F\u30A8\u30E9\u30FC ',
+    localfailed: '\u66F8\u304D\u8FBC\u307F\u30A8\u30E9\u30FC ',
+  };
+} else if (aLocale == 'zh-CN') {
+  var aLang = {
+    needupdate: ' \u9700\u8981\u66F4\u65B0',
+    filecorrupted: ' \u6587\u4EF6\u53EF\u80FD\u5DF2\u635F\u574F',
+    fileready: ' \u5DF2\u51C6\u5907\u597D',
+    filenotexist: ' \u4E0D\u5B58\u5728',
+    filedownloaded: ' \u4E0B\u8F7D\u5B8C\u6210',
+    remotefailed: '\u65E0\u6CD5\u83B7\u53D6 ',
+    localfailed: '\u65E0\u6CD5\u5199\u5165 ',
+  };
+} else if (aLocale == 'zh-TW') {
+  var aLang = {
+    needupdate: ' \u9700\u8981\u66F4\u65B0',
+    filecorrupted: ' \u6587\u4EF6\u53EF\u80FD\u5DF2\u7D93\u640D\u58DE',
+    fileready: ' \u5DF2\u51C6\u5099\u5C31\u7DD2',
+    filenotexist: ' \u4E0D\u5B58\u5728',
+    filedownloaded: ' \u4E0B\u8F09\u6210\u529F',
+    remotefailed: '\u7121\u6CD5\u52A0\u8F09 ',
+    localfailed: '\u7121\u6CD5\u5BEB\u5165 ',
+  };
+} else {
+  console.log('Your locale is not supported');
+}
+
 function aCheck(aName) {
   var aLink = 'http://jc3213.cwsurf.de/swfPack/' + aName;
   var aFile = OS.Path.join(aPath, aName);
@@ -18,18 +63,18 @@ function aCheck(aName) {
       var aDate = new Date(aClient.getResponseHeader('Last-Modified'));
       var aSize = aClient.getResponseHeader('Content-Length');
       if (aDate > info.lastModificationDate) {
-        console.log(aName + ' is out of date');
+        console.log(aName + aLang.needupdate);
         aDownload(aLink, aFile, aName);
       } else if (aSize != info.size) {
-        console.log(aName + ' is not functional');
+        console.log(aName + aLang.filecorrupted);
         aDownload(aLink, aFile, aName);
       } else {
-        console.log(aName + ' is ready');
+        console.log(aName + aLang.fileready);
       }
     }
   }, function onFailure(reason) {
     if (reason instanceof OS.File.Error && reason.becauseNoSuchFile) {
-      console.log(aName + ' is not exsit');
+      console.log(aName + aLang.filenotexist);
       aDownload(aLink, aFile, aName);
     }
   });
@@ -37,12 +82,14 @@ function aCheck(aName) {
 
 function aDownload(aLink, aFile, aName) {
   Downloads.fetch(aLink, aFile, {isPrivate: true}).then(function onSuccess() {
-    console.log(aName + ' download session complete');
+    console.log(aName + aLang.filedownloaded);
   }, function onFailure(reason) {
     if (reason instanceof Downloads.Error && reason.becauseSourceFailed) {
-      console.log('Can not read from ' + aLink);
+      console.log(aLang.remotefailed + aLink);
     } else if (reason instanceof Downloads.Error && reason.becauseTargetFailed) {
-      console.log('Can not write to ' + aFile);
+      console.log(aLang.localfailed + aFile);
+    } else {
+      console.log(reason);
     }
   });
 }
@@ -203,14 +250,14 @@ aCommon.prototype = {
       'target': /http:\/\/g1\.sdo\.com/i
     },
 /**  -------------------------------------------------------------------------------------------------------  */
-    'qq': {
-      'object': 'http://livep.l.qq.com/livemsg',
-      'target': /http:\/\/livew\.l\.qq\.com\/livemsg\?/i
-    },
-/**  -------------------------------------------------------------------------------------------------------  */
     '56': {
       'object': 'http://www.56.com',
       'target': /http:\/\/acs\.stat\.v-56\.com\/vml\/\d+\/ac\/ac.*\.xml/i
+    },
+/**  -------------------------------------------------------------------------------------------------------  */
+    'qq': {
+      'object': 'http://livep.l.qq.com/livemsg',
+      'target': /http:\/\/livew\.l\.qq\.com\/livemsg\?/i
     },
 /**  -------------------------------------------------------------------------------------------------------  */
     '163': {
@@ -296,7 +343,6 @@ aCommon.prototype = {
         aSubject.QueryInterface(Ci.nsITraceableChannel);
         newListener.originalListener = aSubject.setNewListener(newListener);
         newListener.rule = rule;
-        console.log('Filter is working for ' + i);
         break;
       }
     }
@@ -323,7 +369,6 @@ aCommon.prototype = {
         aSubject.QueryInterface(Ci.nsITraceableChannel);
         newListener.originalListener = aSubject.setNewListener(newListener);
         newListener.rule = rule;
-        console.log('Player is working for ' + i);
         break;
       }
     }
@@ -335,6 +380,7 @@ aCommon.prototype = {
   },
   aResolver: function () {
     var rule = this.PLAYERS['iqiyi'];
+    if (!rule) return;
     rule['preHandle'] = function (aSubject) {
       var wnd = this.getWindowForRequest(aSubject);
       if (wnd) {
