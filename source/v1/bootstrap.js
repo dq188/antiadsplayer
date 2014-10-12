@@ -227,6 +227,7 @@ aCommon.prototype = {
   },
   aResolver: function () {
     var rule = this.PLAYERS['iqiyi'];
+    if (!rule) return;
     rule['preHandle'] = function (aSubject) {
       var wnd = this.getWindowForRequest(aSubject);
       if (wnd) {
