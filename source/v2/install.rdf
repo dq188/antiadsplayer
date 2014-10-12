@@ -5,52 +5,52 @@
     <em:id>antiadsplayer2@mozest.com</em:id>
     <em:updateURL>https://raw.githubusercontent.com/jc3213/antiadsplayer/master/update2.rdf</em:updateURL>
     <em:bootstrap>true</em:bootstrap>
-    <em:version>1.2.2</em:version>
-    <em:name>Anti-ads Player Ⅱ</em:name>
+    <em:version>1.2.3</em:version>
+    <em:name>Anti-ads Player MK2</em:name>
     <em:creator>jc3213</em:creator>
-    <em:contributor>15536900</em:contributor>
     <em:contributor>Harv.c</em:contributor>
+    <em:contributor>15536900</em:contributor>
     <em:contributor>catcat520</em:contributor>
     <em:contributor>ywzhaiqi</em:contributor>
     <em:homepageURL>http://jc3213.cwsurf.de/index.html</em:homepageURL>
-    <em:description>Get rid of the Ads and Blackscreen for Youku/Tudou/Letv/iQiyi/PPS/PPTV/56/17173/Tencent/Sohu/Ku6/Netease/Sina/duowan</em:description>
+    <em:description>Get rid of the ads in these Chinese video sites : youku.com | tudou.com | iqiyi.com| pps.tv | letv.com | pptv.com | sohu.com | 17173.com | ku6.com | 56.com | qq.com | 163.com | sina.com.cn | duowan.com</em:description>
     <em:localized>
       <Description>
         <em:locale>zh-cn</em:locale>
-        <em:name>绿・播放器 Ⅱ</em:name>
+        <em:name>Anti-ads Player MK2</em:name>
         <em:creator>jc3213</em:creator>
-        <em:contributor>15536900</em:contributor>
         <em:contributor>Harv.c</em:contributor>
+        <em:contributor>15536900</em:contributor>
         <em:contributor>catcat520</em:contributor>
         <em:contributor>ywzhaiqi</em:contributor>
         <em:homepageURL>http://jc3213.cwsurf.de/index.html</em:homepageURL>
-        <em:description>祛除 优酷/土豆/乐视/奇艺/PPS/PPTV/56/17173/腾讯/搜狐/酷6/网易/新浪/多玩 的广告和黑屏</em:description>
+        <em:description>祛除国内视频网站的广告，支持网站列表 : youku.com | tudou.com | iqiyi.com| pps.tv | letv.com | pptv.com | sohu.com | 17173.com | ku6.com | 56.com | qq.com | 163.com | sina.com.cn | duowan.com</em:description>
       </Description>
     </em:localized>
     <em:localized>
       <Description>
         <em:locale>zh-tw</em:locale>
-        <em:name>綠・播放器 Ⅱ</em:name>
+        <em:name>Anti-ads Player MK2</em:name>
         <em:creator>jc3213</em:creator>
-        <em:contributor>15536900</em:contributor>
         <em:contributor>Harv.c</em:contributor>
+        <em:contributor>15536900</em:contributor>
         <em:contributor>catcat520</em:contributor>
         <em:contributor>ywzhaiqi</em:contributor>
         <em:homepageURL>http://jc3213.cwsurf.de/index.html</em:homepageURL>
-        <em:description>消除 優酷/土豆/樂視/奇藝/PPS/PPTV/56/17173/騰訊/搜狐/酷6/網易/新浪/多玩 的廣告和黑屏</em:description>
+        <em:description>消除大陸視頻網站廣告，支援網站列表 : youku.com | tudou.com | iqiyi.com| pps.tv | letv.com | pptv.com | sohu.com | 17173.com | ku6.com | 56.com | qq.com | 163.com | sina.com.cn | duowan.com</em:description>
       </Description>
     </em:localized>
     <em:localized>
       <Description>
         <em:locale>ja</em:locale>
-        <em:name>すばらプレーヤー Ⅱ</em:name>
+        <em:name>Anti-ads Player MK2</em:name>
         <em:creator>jc3213</em:creator>
-        <em:contributor>15536900</em:contributor>
         <em:contributor>Harv.c</em:contributor>
+        <em:contributor>15536900</em:contributor>
         <em:contributor>catcat520</em:contributor>
         <em:contributor>ywzhaiqi</em:contributor>
         <em:homepageURL>http://jc3213.cwsurf.de/index.html</em:homepageURL>
-        <em:description>Youku/Tudou/Letv/iQiyi/PPS/PPTV/56/17173/Tencent/Sohu/Ku6/Netease/Sina/duowan の広告やブラックスクリーンを除きます</em:description>
+        <em:description>中国の動画共有サイトの広告を除きます : youku.com | tudou.com | iqiyi.com| pps.tv | letv.com | pptv.com | sohu.com | 17173.com | ku6.com | 56.com | qq.com | 163.com | sina.com.cn | duowan.com</em:description>
       </Description>
     </em:localized>
     <em:targetApplication><!-- Firefox -->
