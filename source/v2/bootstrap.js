@@ -4,8 +4,6 @@ Cu.import('resource://gre/modules/Downloads.jsm');
 Cu.import('resource://gre/modules/NetUtil.jsm');
 
 var aPath = OS.Path.join(OS.Constants.Path.profileDir, 'antiadsplayer');
-var aName = ['loader.swf', 'player.swf', 'tudou.swf', 'sp.swf', 'iqiyi_out.swf', 'iqiyi5.swf', 'iqiyi.swf', 'pps.swf', 'letv.swf', 'letv.in.Live.swf', 'pptv.in.Ikan.swf', 'pplive_live.swf', 'sohu.injs.Lite.swf', 'sohu.inyy.Lite.swf', 'sohu.inbj.Live.swf', 'sohu.inyy+injs.Lite.s1.swf', '17173.in.Vod.swf', '17173.out.Vod.swf', '17173.in.Live.swf', '17173.out.Live.swf', 'ku6_in_player.swf', 'ku6_out_player.swf', '56.in.NM.swf', '56.in.TM.swf'];
-aName.forEach(aCheck);
 
 var aLocale = Cc['@mozilla.org/preferences-service;1'].getService(Ci.nsIPrefBranch).getComplexValue('general.useragent.locale', Ci.nsISupportsString).data;
 if (aLocale == 'en-US') {
@@ -21,7 +19,7 @@ if (aLocale == 'en-US') {
 } else if (aLocale == 'ja') {
   var aLang = {
     needupdate: ' \u306E\u6700\u65B0\u7248\u767A\u898B',
-    filecorrupted: ' \u304C\u58CA\u308C\u3066\u3044\u308B\u53EF\u80FD\u6027\u304C\u3042\u308A\u307E\u3059',
+    filecorrupted: ' \u304C\u58CA\u308C\u3066\u3044\u308B\u53EF\u80FD\u6027\u3042\u308A',
     fileready: ' \u6E96\u5099\u5B8C\u4E86',
     filenotexist: ' \u304C\u5B58\u5728\u3057\u307E\u305B\u3093',
     filedownloaded: ' \u30C0\u30A6\u30F3\u30ED\u30FC\u30C9\u5B8C\u4E86',
@@ -51,6 +49,9 @@ if (aLocale == 'en-US') {
 } else {
   console.log('Your locale is not supported');
 }
+
+var aName = ['loader.swf', 'player.swf', 'tudou.swf', 'sp.swf', 'iqiyi_out.swf', 'iqiyi5.swf', 'iqiyi.swf', 'pps.swf', 'letv.swf', 'letv.in.Live.swf', 'pptv.in.Ikan.swf', 'pplive_live.swf', 'sohu.injs.Lite.swf', 'sohu.inyy.Lite.swf', 'sohu.inbj.Live.swf', 'sohu.inyy+injs.Lite.s1.swf', '17173.in.Vod.swf', '17173.out.Vod.swf', '17173.in.Live.swf', '17173.out.Live.swf', 'ku6_in_player.swf', 'ku6_out_player.swf', '56.in.NM.swf', '56.in.TM.swf'];
+aName.forEach(aCheck);
 
 function aCheck(aName) {
   var aLink = 'http://jc3213.cwsurf.de/swfPack/' + aName;
@@ -94,7 +95,7 @@ function aDownload(aLink, aFile, aName) {
   });
 }
 
-var aURI = 'file:///' + encodeURI(aPath.replace(/\\/g, '/'));
+var aURI = OS.Path.toFileURI(aPath);
 
 function aCommon() {}
 aCommon.prototype = {
