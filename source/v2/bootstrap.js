@@ -19,7 +19,7 @@ if (aLocale == 'en-US') {
 } else if (aLocale == 'ja') {
   var aLang = {
     needupdate: ' \u306E\u6700\u65B0\u7248\u767A\u898B',
-    filecorrupted: ' \u304C\u58CA\u308C\u3066\u3044\u308B\u53EF\u80FD\u6027\u3042\u308A',
+    filecorrupted: ' \u304C\u58CA\u308C\u3066\u3044\u308B\u53EF\u80FD\u6027\u304C\u3042\u308A\u307E\u3059',
     fileready: ' \u6E96\u5099\u5B8C\u4E86',
     filenotexist: ' \u304C\u5B58\u5728\u3057\u307E\u305B\u3093',
     filedownloaded: ' \u30C0\u30A6\u30F3\u30ED\u30FC\u30C9\u5B8C\u4E86',
