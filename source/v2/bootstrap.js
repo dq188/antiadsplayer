@@ -217,8 +217,8 @@ aCommon.prototype = {
     },
 /**  -------------------------------------------------------------------------------------------------------  */
     'youku_tudou': {
-      'object': 'http://valc.atm.youku.com/vc',
-      'target': /http:\/\/val[fcopb]\.atm\.youku\.com\/v[fcopb].+/i
+      'object': 'http://valf.atm.youku.com/vf?vip=0',
+      'target': /http:\/\/val[fcopb]\.atm\.youku\.com\/v.+/i
     },
 /**  -------------------------------------------------------------------------------------------------------  */
     'iqiyi_pps': {
