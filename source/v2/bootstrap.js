@@ -50,7 +50,7 @@ if (aLocale == 'en-US') {
   console.log('Your locale is not supported');
 }
 
-var aName = ['loader.swf', 'player.swf', 'tudou.swf', 'sp.swf', 'iqiyi_out.swf', 'iqiyi5.swf', 'iqiyi.swf', 'pps.swf', 'letv.swf', 'letv.in.Live.swf', 'pptv.in.Ikan.swf', 'pplive_live.swf', 'sohu.injs.Lite.swf', 'sohu.inyy.Lite.swf', 'sohu.inbj.Live.swf', 'sohu.inyy+injs.Lite.s1.swf', '17173.in.Vod.swf', '17173.out.Vod.swf', '17173.in.Live.swf', '17173.out.Live.swf', 'ku6_in_player.swf', 'ku6_out_player.swf', '56.in.NM.swf', '56.in.TM.swf'];
+var aName = ['loader.swf', 'player.swf', 'tudou.swf', 'sp.swf', 'iqiyi_out.swf', 'iqiyi5.swf', 'iqiyi.swf', 'pps.swf', 'letv.swf', 'letv.in.Live.swf', 'pptv.in.Ikan.swf', 'pplive_live.swf', 'sohu.injs.Lite.swf', 'sohu.inyy.Lite.swf', 'sohu.inbj.Live.swf', 'sohu.inyy+injs.Lite.s1.swf', '17173.in.Vod.swf', '17173.out.Vod.swf', '17173.in.Live.swf', '17173.out.Live.swf', 'ku6_in_player.swf', 'ku6_out_player.swf', '56.in.NM.swf', '56.in.TM.swf', 'baidu.call.swf'];
 aName.forEach(aCheck);
 
 function aCheck(aName) {
@@ -208,6 +208,11 @@ aCommon.prototype = {
       'object': aURI + '/56.in.TM.swf',
       'target': /http:\/\/s1\.56img\.com\/flashApp\/v_player_tm.*\.swf/i
     },
+/**  -------------------------------------------------------------------------------------------------------  */
+    'baidu': {
+      'object': aURI + '/baidu.call.swf',
+      'target': /http:\/\/list\.video\.baidu\.com\/swf\/advPlayer\.swf/i
+    },
   },
   FILTERS: {
 /**  -------------------------------------------------------------------------------------------------------  */
@@ -223,7 +228,7 @@ aCommon.prototype = {
 /**  -------------------------------------------------------------------------------------------------------  */
     'iqiyi_pps': {
       'object': 'http://www.iqiyi.com/player/cupid/common/clear.swf',
-      'target': /http:\/\/www\.iqiyi\.com\/(common\/flash)?player\/(\d+\/((dsp)?roll|hawkeye)|cupid\/\d+).*\.swf/i
+      'target': /http:\/\/www\.iqiyi\.com\/common\/flashplayer\/\d+\/((dsp)?roll|hawkeye|pause).*\.swf/i
     },
 /**  -------------------------------------------------------------------------------------------------------  */
     'letv': {
@@ -484,6 +489,8 @@ function install(data, reason) {
     OS.File.move(OS.Path.join(aPath, 'Player_file_out.swf'), OS.Path.join(aPath, '17173.out.Vod.swf'));
     OS.File.move(OS.Path.join(aPath, 'Player_stream.swf'), OS.Path.join(aPath, '17173.in.Live.swf'));
     OS.File.move(OS.Path.join(aPath, 'Player_stream_out.swf'), OS.Path.join(aPath, '17173.out.Live.swf'));
+    OS.File.move(OS.Path.join(aPath, 'ku6.swf'), OS.Path.join(aPath, 'ku6_in_swf'));
+    OS.File.move(OS.Path.join(aPath, 'ku6_out.swf'), OS.Path.join(aPath, 'ku6_out_swf'));
   }
 }
 
