@@ -88,7 +88,6 @@ aCommon.prototype = {
     },
 */
 /**  -------------------------------------------------------------------------------------------------------  */
-/*
     '17173': {
       'object': aURI + '/17173.in.Vod.swf',
       'target': /http:\/\/f\.v\.17173cdn\.com\/\d+\/flash\/Player_file\.swf/i
@@ -105,7 +104,6 @@ aCommon.prototype = {
       'object': aURI + '/17173.out.Live.swf',
       'target': /http:\/\/f\.v\.17173cdn\.com\/\d+\/flash\/Player_stream_(custom)?Out\.swf/i
     },
-*/
 /**  -------------------------------------------------------------------------------------------------------  */
     'ku6': {
       'object': aURI + '/ku6_in_player.swf',
@@ -165,8 +163,8 @@ aCommon.prototype = {
     },
 /**  -------------------------------------------------------------------------------------------------------  */
     '17173': {
-      'object': 'http://cdn4.v.17173.com/crossdomain.xml',
-      'target': /http:\/\/cdn4\.v\.17173\.com\/(?!crossdomain\.xml).*/i
+      'object': 'http://17173im.allyes.com/crossdomain.xml',
+      'target': /http:\/\/cdn\d+\.v\.17173\.com\/(?!crossdomain\.xml).*/i
     },
 /**  -------------------------------------------------------------------------------------------------------  */
     'ku6': {
