@@ -38,12 +38,10 @@ aCommon.prototype = {
       'target': /https?:\/\/www\.iqiyi\.com\/(common\/flash)?player\/\d+\/(Main|Share)?Player.*\.swf/i
     },
 /**  -------------------------------------------------------------------------------------------------------  */
-/*
     'pps': {
       'object': aURI + '/pps.swf',
       'target': /http:\/\/www\.iqiyi\.com\/player\/cupid\/common\/pps_flvplay_s\.swf/i
     },
-*/
 /**  -------------------------------------------------------------------------------------------------------  */
 /*
     'letv': {
@@ -127,7 +125,12 @@ aCommon.prototype = {
       'object': aURI + '/56.in.TM.swf',
       'target': /http\:\/\/s1\.56img\.com\/flashApp\/v_player_tm.*\.swf/i
     },
-*/	
+*/
+/**  -------------------------------------------------------------------------------------------------------  */
+    'baidu': {
+      'object': aURI + '/baidu.call.swf',
+      'target': /http:\/\/list\.video\.baidu\.com\/swf\/advPlayer\.swf/i
+    },
   },
   FILTERS: {
 /**  -------------------------------------------------------------------------------------------------------  */
