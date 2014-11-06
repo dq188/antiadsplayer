@@ -39,6 +39,10 @@ aCommon.prototype = {
     },
 /**  -------------------------------------------------------------------------------------------------------  */
     'pps': {
+      'object': aURI + '/iqiyi.swf',
+      'target': /http:\/\/www\.iqiyi\.com\/common\/flashplayer\/\d+\/PPSMainPlayer.*\.swf/i
+    },
+    'pps_out': {
       'object': aURI + '/pps.swf',
       'target': /http:\/\/www\.iqiyi\.com\/player\/cupid\/common\/pps_flvplay_s\.swf/i
     },
