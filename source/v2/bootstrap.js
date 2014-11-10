@@ -182,7 +182,7 @@ aCommon.prototype = {
       'object': aURI + '/pptv.in.Ikan.swf',
       'target': /http:\/\/player.pplive.cn\/ikan\/.*\/player4player2\.swf/i
     },
-    'pplive': {
+    'pptv_live': {
       'object': aURI + '/pptv.in.Live.swf',
       'target': /http:\/\/player.pplive.cn\/live\/.*\/player4live2\.swf/i
     },
