@@ -50,7 +50,33 @@ if (aLocale == 'en-US') {
   console.log('Your locale is not supported');
 }
 
-var aName = ['loader.swf', 'player.swf', 'tudou.swf', 'sp.swf', 'iqiyi_out.swf', 'iqiyi5.swf', 'iqiyi.swf', 'pps.swf', 'letv.swf', 'letv.in.Live.swf', 'pptv.in.Ikan.swf', 'pplive_live.swf', 'sohu.injs.Lite.swf', 'sohu.inyy.Lite.swf', 'sohu.inbj.Live.swf', 'sohu.inyy+injs.Lite.s1.swf', '17173.in.Vod.swf', '17173.out.Vod.swf', '17173.in.Live.swf', '17173.out.Live.swf', 'ku6_in_player.swf', 'ku6_out_player.swf', '56.in.NM.swf', '56.in.TM.swf', 'baidu.call.swf'];
+var aName = [
+  'loader.swf',
+  'player.swf',
+  'tudou.swf',
+  'sp.swf',
+  'iqiyi_out.swf',
+  'iqiyi5.swf',
+  'iqiyi.swf',
+  'pps.swf',
+  'letv.swf',
+  'letv.in.Live.swf',
+  'pptv.in.Ikan.swf',
+  'pptv.in.Live.swf',
+  'sohu.injs.Lite.swf',
+  'sohu.inyy.Lite.swf',
+  'sohu.inbj.Live.swf',
+  'sohu.inyy+injs.Lite.s1.swf',
+  '17173.in.Vod.swf',
+  '17173.out.Vod.swf',
+  '17173.in.Live.swf',
+  '17173.out.Live.swf',
+  'ku6_in_player.swf',
+  'ku6_out_player.swf',
+  '56.in.NM.swf',
+  '56.in.TM.swf',
+  'baidu.call.swf'
+  ];
 aName.forEach(aCheck);
 
 function aCheck(aName) {
@@ -157,7 +183,7 @@ aCommon.prototype = {
       'target': /http:\/\/player.pplive.cn\/ikan\/.*\/player4player2\.swf/i
     },
     'pplive': {
-      'object': aURI + '/pplive_live.swf',
+      'object': aURI + '/pptv.in.Live.swf',
       'target': /http:\/\/player.pplive.cn\/live\/.*\/player4live2\.swf/i
     },
 /**  -------------------------------------------------------------------------------------------------------  */
@@ -495,6 +521,7 @@ function install(data, reason) {
     OS.File.move(OS.Path.join(aPath, 'Player_stream_out.swf'), OS.Path.join(aPath, '17173.out.Live.swf'));
     OS.File.move(OS.Path.join(aPath, 'ku6.swf'), OS.Path.join(aPath, 'ku6.in.swf'));
     OS.File.move(OS.Path.join(aPath, 'ku6_out.swf'), OS.Path.join(aPath, 'ku6.out.swf'));
+    OS.File.move(OS.Path.join(aPath, 'pplive_live.swf'), OS.Path.join(aPath, 'pptv.in.Live.swf'));
   }
 }
 
