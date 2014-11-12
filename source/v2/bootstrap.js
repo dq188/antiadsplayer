@@ -6,17 +6,7 @@ Cu.import('resource://gre/modules/NetUtil.jsm');
 var aPath = OS.Path.join(OS.Constants.Path.profileDir, 'antiadsplayer');
 
 var aLocale = Cc['@mozilla.org/preferences-service;1'].getService(Ci.nsIPrefBranch).getComplexValue('general.useragent.locale', Ci.nsISupportsString).data;
-if (aLocale == 'en-US') {
-  var aLang = {
-    needupdate: ' is out of date',
-    filecorrupted: ' may be corrupted',
-    fileready: ' is ready to serve',
-    filenotexist: ' is not exist',
-    filedownloaded: ' download session complete',
-    remotefailed: ' failed to load remote file',
-    localfailed: ' failed to save local file',
-  };
-} else if (aLocale == 'ja') {
+if (aLocale == 'ja') {
   var aLang = {
     needupdate: ' \u306E\u6700\u65B0\u7248\u767A\u898B',
     filecorrupted: ' \u304C\u58CA\u308C\u3066\u3044\u308B\u53EF\u80FD\u6027\u304C\u3042\u308A\u307E\u3059',
@@ -47,7 +37,18 @@ if (aLocale == 'en-US') {
     localfailed: ' \u7121\u6CD5\u7DE9\u5B58\u6587\u4EF6',
   };
 } else {
-  console.log('Your locale is not supported');
+  var aLang = {
+    needupdate: ' is out of date',
+    filecorrupted: ' may be corrupted',
+    fileready: ' is ready to serve',
+    filenotexist: ' is not exist',
+    filedownloaded: ' download session complete',
+    remotefailed: ' failed to load remote file',
+    localfailed: ' failed to save local file',
+  };
+  if (aLang !== 'en-US') {
+    console.log('Your locale is not supported');
+  }
 }
 
 var aName = [
