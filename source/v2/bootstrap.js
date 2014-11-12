@@ -46,7 +46,7 @@ if (aLocale == 'ja') {
     remotefailed: ' failed to load remote file',
     localfailed: ' failed to save local file',
   };
-  if (aLang !== 'en-US') {
+  if (aLocale !== 'en-US') {
     console.log('Your locale is not supported');
   }
 }
