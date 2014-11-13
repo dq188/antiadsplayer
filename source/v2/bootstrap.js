@@ -267,6 +267,10 @@ aCommon.prototype = {
       'object': 'http://www.iqiyi.com/player/cupid/common/clear.swf',
       'target': /http:\/\/www\.iqiyi\.com\/common\/flashplayer\/\d+\/((dsp)?roll|hawkeye|pause).*\.swf/i
     },
+    'iqiyi_live': {
+      'object': 'http://www.iqiyi.com/player/cupid/common/clear.swf',
+      'target': /http:\/\/dispatcher\.video\.qiyi\.com\/dispn\/iaml\.swf/i
+    },
 /**  -------------------------------------------------------------------------------------------------------  */
     'letv': {
       'object': 'http://ark.letv.com/s',
