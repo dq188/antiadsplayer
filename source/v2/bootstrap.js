@@ -102,7 +102,7 @@ function aCheck(aName) {
         }
       }
     },
-	function onFailure(reason) {
+    function onFailure(reason) {
       if (reason instanceof OS.File.Error && reason.becauseNoSuchFile) {
         console.log(aName + aLang.filenotexist);
         aDownload(aLink, aFile, aName);
