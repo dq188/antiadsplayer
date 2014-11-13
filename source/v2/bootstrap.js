@@ -83,43 +83,49 @@ aName.forEach(aCheck);
 function aCheck(aName) {
   var aLink = 'http://jc3213.cwsurf.de/swfPack/' + aName;
   var aFile = OS.Path.join(aPath, aName);
-  OS.File.stat(aFile).then(function onSuccess(info) {
-    var aClient = Cc['@mozilla.org/xmlextras/xmlhttprequest;1'].createInstance(Ci.nsIXMLHttpRequest);
-    aClient.open('HEAD', aLink, true);
-    aClient.send();
-    aClient.onload = function () {
-      var aDate = new Date(aClient.getResponseHeader('Last-Modified'));
-      var aSize = aClient.getResponseHeader('Content-Length');
-      if (aDate > info.lastModificationDate) {
-        console.log(aName + aLang.needupdate);
+  OS.File.stat(aFile).then(
+    function onSuccess(info) {
+      var aClient = Cc['@mozilla.org/xmlextras/xmlhttprequest;1'].createInstance(Ci.nsIXMLHttpRequest);
+      aClient.open('HEAD', aLink, true);
+      aClient.send();
+      aClient.onload = function () {
+        var aDate = new Date(aClient.getResponseHeader('Last-Modified'));
+        var aSize = aClient.getResponseHeader('Content-Length');
+        if (aDate > info.lastModificationDate) {
+          console.log(aName + aLang.needupdate);
+          aDownload(aLink, aFile, aName);
+        } else if (aSize != info.size) {
+          console.log(aName + aLang.filecorrupted);
+          aDownload(aLink, aFile, aName);
+        } else {
+          console.log(aName + aLang.fileready);
+        }
+      }
+    },
+	function onFailure(reason) {
+      if (reason instanceof OS.File.Error && reason.becauseNoSuchFile) {
+        console.log(aName + aLang.filenotexist);
         aDownload(aLink, aFile, aName);
-      } else if (aSize != info.size) {
-        console.log(aName + aLang.filecorrupted);
-        aDownload(aLink, aFile, aName);
-      } else {
-        console.log(aName + aLang.fileready);
       }
     }
-  }, function onFailure(reason) {
-    if (reason instanceof OS.File.Error && reason.becauseNoSuchFile) {
-      console.log(aName + aLang.filenotexist);
-      aDownload(aLink, aFile, aName);
-    }
-  });
+  );
 }
 
 function aDownload(aLink, aFile, aName) {
-  Downloads.fetch(aLink, aFile, {isPrivate: true}).then(function onSuccess() {
-    console.log(aName + aLang.filedownloaded);
-  }, function onFailure(reason) {
-    if (reason instanceof Downloads.Error && reason.becauseSourceFailed) {
-      console.log(aLink + aLang.remotefailed);
-    } else if (reason instanceof Downloads.Error && reason.becauseTargetFailed) {
-      console.log(aFile + aLang.localfailed);
-    } else {
-      console.log(reason);
+  Downloads.fetch(aLink, aFile, {isPrivate: true}).then(
+    function onSuccess() {
+      console.log(aName + aLang.filedownloaded);
+    },
+    function onFailure(reason) {
+      if (reason instanceof Downloads.Error && reason.becauseSourceFailed) {
+        console.log(aLink + aLang.remotefailed);
+      } else if (reason instanceof Downloads.Error && reason.becauseTargetFailed) {
+        console.log(aFile + aLang.localfailed);
+      } else {
+        console.log(reason);
+      }
     }
-  });
+  );
 }
 
 var aURI = OS.Path.toFileURI(aPath);
