@@ -148,7 +148,11 @@ aCommon.prototype = {
 /**  -------------------------------------------------------------------------------------------------------  */
     'iqiyi_pps': {
       'object': 'http://www.iqiyi.com/player/cupid/common/clear.swf',
-      'target': /http:\/\/www\.iqiyi\.com\/(common\/flash)?player\/(\d+\/((dsp)?roll|hawkeye)|cupid\/\d+).*\.swf/i
+      'target': /http:\/\/www\.iqiyi\.com\/common\/flashplayer\/\d+\/((dsp)?roll|hawkeye|pause).*\.swf/i
+    },
+    'iqiyi_live': {
+      'object': 'http://www.iqiyi.com/player/cupid/common/clear.swf',
+      'target': /http:\/\/dispatcher\.video\.qiyi\.com\/dispn\/iaml\.swf/i
     },
 /**  -------------------------------------------------------------------------------------------------------  */
     'letv': {
