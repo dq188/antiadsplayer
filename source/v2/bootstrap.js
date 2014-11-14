@@ -253,11 +253,6 @@ aCommon.prototype = {
   },
   FILTERS: {
 /**  -------------------------------------------------------------------------------------------------------  */
-    'tudou_css': {
-      'object': 'https://raw.githubusercontent.com/jc3213/antiadsplayer/master/test/play_50.css',
-      'target': /http:\/\/css\.tudouui\.com\/v3\/dist\/css\/play\/play_50\.css/i
-    },
-/**  -------------------------------------------------------------------------------------------------------  */
     'youku_tudou': {
       'object': 'http://valf.atm.youku.com/vf?vip=0',
       'target': /http:\/\/val[fcopb]\.atm\.youku\.com\/v.+/i
