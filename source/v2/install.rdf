@@ -5,7 +5,7 @@
     <em:id>antiadsplayer2@mozest.com</em:id>
     <em:updateURL>https://raw.githubusercontent.com/jc3213/antiadsplayer/master/update2.rdf</em:updateURL>
     <em:bootstrap>true</em:bootstrap>
-    <em:version>1.2.7</em:version>
+    <em:version>1.2.8</em:version>
     <em:name>Anti-ads Player MK2</em:name>
     <em:creator>jc3213</em:creator>
     <em:contributor>Harv.c</em:contributor>
