@@ -61,7 +61,6 @@ var aName = [
   'iqiyi.swf',
   'pps.swf',
   'letv.swf',
-  'letv.in.Live.swf',
   'pptv.in.Ikan.swf',
   'pptv.in.Live.swf',
   'sohu.injs.Lite.swf',
@@ -180,10 +179,6 @@ aCommon.prototype = {
       'object': 'http://player.letvcdn.com/p/201407/24/15/newplayer/1/SSLetvPlayer.swf',
       'target': /http:\/\/player\.letvcdn\.com\/p\/((?!15)\d+\/){3}newplayer\/1\/S?SLetvPlayer\.swf/i
     },
-    'letv_live': {
-      'object': aURI + '/letv.in.Live.swf',
-      'target': /http:\/\/player\.letvcdn\.com\/.*\/newplayer\/(SDK)?LivePlayer\.swf/i
-    },
 /**  -------------------------------------------------------------------------------------------------------  */
     'pptv': {
       'object': aURI + '/pptv.in.Ikan.swf',
@@ -269,7 +264,7 @@ aCommon.prototype = {
 /**  -------------------------------------------------------------------------------------------------------  */
     'letv': {
       'object': 'http://ark.letv.com/s',
-      'target': /http:\/\/ark\.letv\.com\/s\?ark/i
+      'target': /http:\/\/(ark|fz)\.letv\.com\/s\?ark/i
     },
 /**  -------------------------------------------------------------------------------------------------------  */
     'pptv_pplive': {
@@ -528,6 +523,7 @@ function install(data, reason) {
     OS.File.move(OS.Path.join(aPath, 'ku6.swf'), OS.Path.join(aPath, 'ku6.in.swf'));
     OS.File.move(OS.Path.join(aPath, 'ku6_out.swf'), OS.Path.join(aPath, 'ku6.out.swf'));
     OS.File.move(OS.Path.join(aPath, 'pplive_live.swf'), OS.Path.join(aPath, 'pptv.in.Live.swf'));
+    OS.File.remove(OS.Path.join(aPath, 'letv.in.Live.swf'));
   }
 }
 
