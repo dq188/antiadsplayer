@@ -5,7 +5,7 @@
     <em:id>antiadsplayer3@mozest.com</em:id>
     <em:updateURL>https://raw.githubusercontent.com/jc3213/antiadsplayer/master/update3.rdf</em:updateURL>
     <em:bootstrap>true</em:bootstrap>
-    <em:version>1.0.3</em:version>
+    <em:version>1.0.4</em:version>
     <em:name>Anti-ads Player MK3</em:name>
     <em:creator>jc3213</em:creator>
     <em:contributor>Harv.c</em:contributor>
