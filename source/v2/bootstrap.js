@@ -80,7 +80,7 @@ var aName = [
 aName.forEach(aCheck);
 
 function aCheck(aName) {
-  var aLink = 'http://jc3213.cwsurf.de/swfPack/' + aName;
+  var aLink = 'http://yourdomain.com/' + aName;
   var aFile = OS.Path.join(aPath, aName);
   OS.File.stat(aFile).then(
     function onSuccess(info) {
