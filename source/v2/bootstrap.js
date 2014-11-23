@@ -120,8 +120,6 @@ function aDownload(aLink, aFile, aName) {
         console.log(aLink + aLang.remotefailed);
       } else if (reason instanceof Downloads.Error && reason.becauseTargetFailed) {
         console.log(aFile + aLang.localfailed);
-      } else {
-        console.log(reason);
       }
     }
   );
